@@ -2,7 +2,23 @@
 <head>
     <title>Map Toying</title>
 </head>
+
 <link rel="stylesheet" href="../../main.css">
+<script src="js/planeto.js"></script>
+<script src="js/map.js"></script>
+<script src="js/main.js"></script>
+
 <body>
     <canvas id="mapCan"></canvas>
+    <script>
+        var map = [];
+        var ctx = mapCan.getContext('2d');
+        var settings = {debug: false};
+
+        map = convertDataToMap(tstMap());
+
+        render(ctx, map, settings);
+
+        
+    </script>
 </body>
