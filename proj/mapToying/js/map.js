@@ -22,3 +22,25 @@ function tstMap(){
 
     return mapData;
 }
+
+function randomGen(settings){
+    let mapData = [];
+    let coords = [];
+    let cons = [];
+
+    coords = getCoords(settings);
+    cons = convertEdges(filterEdges(settings, coords, generateTriangles(coords)));
+
+    for(var r=0; r<coords.length; r++){
+		var con;
+		if(cons[r] != undefined){
+			con = cons[r];
+		}
+		else{
+			con = [];
+		}
+		mapData.push([r, coords[r][0], coords[r][1], con]);
+	}
+
+    return mapData;
+}

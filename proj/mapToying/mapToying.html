@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="../../main.css">
 <script src="js/planeto.js"></script>
 <script src="js/map.js"></script>
+<script src="js/delaunator.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/utils.js"></script>
 <script src="js/main.js"></script>
 
 <body>
@@ -13,10 +16,20 @@
     <script>
         var map = [];
         var ctx = mapCan.getContext('2d');
-        var settings = {debug: false};
+        var settings = {debug: false, 
+            width: 2500, 
+            height: 2500, 
+            type: 2, 
+            count: 0, 
+            padding: 60, 
+            density: .65, 
+            r: 50, 
+            maxEdge: 200, 
+            minAng: Math.PI/8};
 
-        map = convertDataToMap(tstMap());
+        map = convertDataToMap(randomGen(settings));
 
+        setCanvasDims(map);
         render(ctx, map, settings);
 
         
