@@ -79,6 +79,10 @@ function getCoords(settings){
 			console.log("ring!");
 			plans = ring(settings);
 			break;
+		case 5:
+			console.log("sym!");
+			plans = symmetry(settings);
+			break;
 	}
 	console.log(plans.length);
     return plans;
@@ -86,7 +90,7 @@ function getCoords(settings){
 
 function generateChunk(settings){
     let cords = [];
-    count = Math.floor(settings.density*(settings.width*settings.r)*(settings.height*settings.r)/(settings.r*settings.r*Math.PI));
+	count = Math.floor(settings.density*(settings.width-2*settings.r)*(settings.height-2*settings.r)/(settings.r*settings.r*Math.PI));
 	for(let t=0; t<count;t++){
 		let safe = false;
 		while (!safe) {
@@ -155,7 +159,7 @@ function circle(settings){
 				var p = [x,y];
 				safe = true;
 				for (var j=0; j<cords.length; j+=1) {
-					var q = cords[j];
+                    var q = cords[j];
 					if ((p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])<settings.r*settings.r) {
 						safe = false;
 						break;
@@ -280,4 +284,19 @@ function clusters(w, h, density, padding,r,type, size){
 	//console.log(clustCoords);
 	//console.log(coords);
 	return coords;
+}
+
+function symmetry(settings){
+	let tempW = settings.width / 2;
+	let tempH = settings.height / 2;
+	let tmpcoords = generateChunk({width: tempW, height: tempH, r: settings.r, density: settings.density, padding: settings.padding});
+	let cords = [];
+	for(let t = 0; t < tmpcoords.length; t++){
+		let quad1 = [tmpcoords[t][0], tmpcoords[t][1]];
+		let quad2 = [settings.width-quad1[0], quad1[1]];
+		let quad3 = [settings.width-quad1[0], settings.height-quad1[1]];
+		let quad4 = [quad1[0], settings.height-quad1[1]];
+		cords.push(quad1, quad2, quad3, quad4);
+	}
+	return cords;
 }
