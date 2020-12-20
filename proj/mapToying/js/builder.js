@@ -21,18 +21,19 @@ function filterEdges(settings, coords, triangles){
 	var edges = [];
 	var ind = 0;
 	for(var o = 0; o < triangles.length; o++){
-		if(findLength(triangles[o][0], triangles[o][1], coords) <= settings.maxEdge){
-			edges[ind] = [triangles[o][0], triangles[o][1]];
-			ind += 1;
-		}
-		if(findLength(triangles[o][1], triangles[o][2], coords) <= settings.maxEdge){
-			edges[ind] = [triangles[o][1], triangles[o][2]];
-			ind += 1;
-		}
-		if(findLength(triangles[o][0], triangles[o][2], coords) <= settings.maxEdge){
-			edges[ind] = [triangles[o][0], triangles[o][2]];
-			ind += 1;
-		}
+		let spiceChance = Math.random();
+			if(findLength(triangles[o][0], triangles[o][1], coords) <= settings.maxEdge || settings.spice > spiceChance){
+				edges[ind] = [triangles[o][0], triangles[o][1]];
+				ind += 1;
+			}
+			if(findLength(triangles[o][1], triangles[o][2], coords) <= settings.maxEdge || settings.spice > spiceChance){
+				edges[ind] = [triangles[o][1], triangles[o][2]];
+				ind += 1;
+			}
+			if(findLength(triangles[o][0], triangles[o][2], coords) <= settings.maxEdge || settings.spice > spiceChance){
+				edges[ind] = [triangles[o][0], triangles[o][2]];
+				ind += 1;
+			}
 	}
 	return edges;
 }

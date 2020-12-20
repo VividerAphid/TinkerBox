@@ -27,3 +27,8 @@ function setCanvasDims(map){
 	//console.log("wid: " + canvas.width);
 	//console.log("hei: " + canvas.height);
 }
+
+function listTheCounts(settings, vary){
+	console.log(Math.floor(settings.density*(settings.width-2*settings.r)*(settings.height-2*settings.r)/(settings.r*settings.r*Math.PI)));
+	console.log(Math.floor(settings.density*(settings.width-vary*settings.r)*(settings.height-vary*settings.r)/(settings.r*settings.r*Math.PI)));
+}
