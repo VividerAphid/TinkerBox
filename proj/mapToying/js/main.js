@@ -24,11 +24,29 @@ function setCanvasDims(map){
 	}
 	mapCan.width = maxX + 100;
 	mapCan.height = maxY + 100;
+	settingsBox.height = maxY + 100;
 	//console.log("wid: " + canvas.width);
 	//console.log("hei: " + canvas.height);
 }
 
-function listTheCounts(settings, vary){
-	console.log(Math.floor(settings.density*(settings.width-2*settings.r)*(settings.height-2*settings.r)/(settings.r*settings.r*Math.PI)));
-	console.log(Math.floor(settings.density*(settings.width-vary*settings.r)*(settings.height-vary*settings.r)/(settings.r*settings.r*Math.PI)));
+function update(){
+
+	settings = {debug: false, 
+		width: widthIn.value * 1, 
+		height: heightIn.value * 1, 
+		type: mapType.selectedIndex * 1, 
+		count: 0, //Not used yet, reverse engineering soon
+		padding: paddingIn.value * 1, 
+		density: densityIn.value  * 1, 
+		r: minRadiusIn.value  * 1, //Minimum distance radius?
+		maxEdge: maxEdgeIn.value  * 1, 
+		minAng: Math.PI/8, //Not used yet
+		spice: edgeSpiceIn.value  * 1, //Edge spice
+		extra: {} //Extra stuff for specific map settings
+	};
+
+	map = convertDataToMap(randomGen(settings));
+
+    setCanvasDims(map);
+    render(ctx, map, settings);
 }

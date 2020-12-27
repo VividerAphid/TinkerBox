@@ -173,28 +173,28 @@ function circle(settings){
 	return cords;
 }
 
-function midSmash(w, h, density, padding, r){
+function midSmash(settings){
 	var cords = [];
-	count = Math.floor(density*(w-2*r)*(h-2*r)/(r*r*Math.PI));
-	var outRad = h/2 - padding*2;
+	count = Math.floor(settings.density*(settings.width-2*settings.r)*(settings.height-2*settings.r)/(settings.r*settings.r*Math.PI));
+	var outRad = settings.height/2 - settings.padding*2;
 	var inRad = outRad / 3;
-	var cX = w/2;
-	var cY = h/2;
+	var cX = settings.width/2;
+	var cY = settings.height/2;
 	cords.push([cX, cY]);
 	for(var t = 0; t<count; t++){
-		var x = Math.floor((Math.random()*(w-2*padding))+ padding);
-		var y = Math.floor((Math.random()*(h-2*padding))+ padding);
+		var x = Math.floor((Math.random()*(settings.width-2*settings.padding))+ settings.padding);
+		var y = Math.floor((Math.random()*(settings.height-2*settings.padding))+ settings.padding);
 		while((x - cX)*(x - cX) + (y - cY)*(y - cY) > outRad*outRad){
 			var safe = false;
 			while (!safe) {
-				var x = Math.floor((Math.random()*(w-2*padding))+ padding);
-				var y = Math.floor((Math.random()*(h-2*padding))+ padding);
+				var x = Math.floor((Math.random()*(settings.width-2*settings.padding))+ settings.padding);
+				var y = Math.floor((Math.random()*(settings.height-2*settings.padding))+ settings.padding);
 				if((x - cX)*(x - cX) + (y - cY)*(y - cY) < inRad*inRad){
 					var p = [x,y];
 					safe = true;
 					for (var j=0; j<cords.length; j+=1) {
 						var q = cords[j];
-						if ((p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])<r*r) {
+						if ((p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])<settings.r*settings.r) {
 							safe = false;
 							break;
 						}
@@ -207,26 +207,26 @@ function midSmash(w, h, density, padding, r){
 	return cords;
 }
 
-function ring(w, h, density, padding, r){
+function ring(settings){
 	var cords = [];
-	count = Math.floor(density*(w-2*r)*(h-2*r)/(r*r*Math.PI));
-	var outRad = h/2 - padding*2;
+	count = Math.floor(settings.density*(settings.width-2*settings.r)*(settings.height-2*settings.r)/(settings.r*settings.r*Math.PI));
+	var outRad = settings.height/2 - settings.padding*2;
 	var inRad = outRad / 2;
-	var cX = w/2;
-	var cY = h/2;
+	var cX = settings.width/2;
+	var cY = settings.height/2;
 	for(var t = 0; t<count; t++){
-		var x = Math.floor((Math.random()*(w-2*padding))+ padding);
-		var y = Math.floor((Math.random()*(h-2*padding))+ padding);
+		var x = Math.floor((Math.random()*(settings.width-2*settings.padding))+ settings.padding);
+		var y = Math.floor((Math.random()*(settings.height-2*settings.padding))+ settings.padding);
 		while((x - cX)*(x - cX) + (y - cY)*(y - cY) > outRad*outRad || (x - cX)*(x - cX) + (y - cY)*(y - cY) < inRad*inRad){
 			var safe = false;
 			while (!safe) {
-				var x = Math.floor((Math.random()*(w-2*padding))+ padding);
-				var y = Math.floor((Math.random()*(h-2*padding))+ padding);
+				var x = Math.floor((Math.random()*(settings.width-2*settings.padding))+ settings.padding);
+				var y = Math.floor((Math.random()*(settings.height-2*settings.padding))+ settings.padding);
 					var p = [x,y];
 					safe = true;
 					for (var j=0; j<cords.length; j+=1) {
 						var q = cords[j];
-						if ((p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])<r*r) {
+						if ((p[0]-q[0])*(p[0]-q[0])+(p[1]-q[1])*(p[1]-q[1])<settings.r*settings.r) {
 							safe = false;
 							break;
 						}

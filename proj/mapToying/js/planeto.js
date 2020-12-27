@@ -1,14 +1,20 @@
 class planeto{
     constructor(id, name, x, y, radius, colour, value, connections){
-        this.id = id;
-        this.name = name;
+        Object.defineProperties(this, {
+            id: {
+                value: id,
+                writable: false
+            }
+        });
         this.x = x;
         this.y = y;
+        this.name = name;
         this.radius = radius;
         this.colour = colour;
         this.value = value;
         this.isShowing = false;
         this.connections = connections;
+        
     }
 
     drawConnections(G, map, settings){

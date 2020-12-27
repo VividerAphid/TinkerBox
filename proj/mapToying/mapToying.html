@@ -2,8 +2,9 @@
 <head>
     <title>Map Toying</title>
 </head>
-
+<link rel="stylesheet" href="mapToying.css">
 <link rel="stylesheet" href="../../main.css">
+
 <script src="js/planeto.js"></script>
 <script src="js/map.js"></script>
 <script src="js/delaunator.js"></script>
@@ -12,32 +13,52 @@
 <script src="js/main.js"></script>
 
 <body>
-    <canvas id="mapCan"></canvas>
+    <div class="holder" id="settingsBox">
+        <h2>Settings</h2>
+
+        <label for="mapType">Map Type:</label>
+        <select id="mapType">
+            <option value="chunk">Chunk</option>
+            <option value="Bottleneck">Bottleneck</option>
+            <option value="circle">Circle</option>
+            <option value="MidSmash">MidSmash</option>
+            <option value="Ring">Ring</option>
+            <option value="Symmetry">Symmetry</option>
+        </select><br>
+
+        <label for="widthIn">Width:</label>
+        <input type="text" id="widthIn" value="1500"><br>
+
+        <label for="heightIn">Height:</label>
+        <input type="text" id="heightIn" value="1500"><br>
+
+        <label for="paddingIn">Padding:</label>
+        <input type="text" id="paddingIn" value="60"><br>
+
+        <label for="densityIn">Density:</label>
+        <input type="text" id="densityIn" value=".45"><br>
+
+        <label for="minRadiusIn">Min Distance:</label>
+        <input type="text" id="minRadiusIn" value="50"><br>
+
+        <label for="maxEdgeIn">Max Edge Length:</label>
+        <input type="text" id="maxEdgeIn" value="200"><br>
+
+        <label for="edgeSpiceIn">Max Edge Length:</label>
+        <input type="text" id="edgeSpiceIn" value="0.00"><br>
+
+        <button id="generateBtn" onclick="update()">Generate Map</button>
+
+    </div>
+    <div class="holder">
+        <canvas id="mapCan"></canvas>
+    </div>
     <script>
         var map = [];
         var ctx = mapCan.getContext('2d');
-        var settings = {debug: false, 
-            width: 2500, 
-            height: 2500, 
-            type: 0, 
-            count: 0, 
-            padding: 60, 
-            density: .45, 
-            r: 50, 
-            maxEdge: 200, 
-            minAng: Math.PI/8,
-            spice: 0.07
-        };
+        var settings = {}; //defined in update()
 
-        map = convertDataToMap(randomGen(settings));
+        update();
 
-        setCanvasDims(map);
-        render(ctx, map, settings);
-
-        //listTheCounts(settings, -10);
-        //listTheCounts(settings, 1);
-        listTheCounts(settings, 1);
-
-        
     </script>
 </body>
