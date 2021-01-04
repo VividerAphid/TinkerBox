@@ -3,6 +3,7 @@
     border-radius: 5px;
     width: 200px;
     height: 300px;
+    font-size: 20px;
     position: absolute;
 }
 .cardTitle{
@@ -21,4 +22,9 @@
 .cardDescription{
     margin-left:9%;
     margin-right:9%;
+}
+.zoomedCard{
+    width: 400px;
+    height: 600px;
+    font-size:40px;
 }

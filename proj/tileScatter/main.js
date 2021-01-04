@@ -17,3 +17,33 @@ function buildCard(props){
     currentCard.style.backgroundColor = props.colour;
     return currentCard;
 }
+
+function pickUp(targ){
+    if(viewing.isViewing && viewing.card != targ){
+        viewing.card.className = "card";
+        let rotation = Math.floor(Math.random()*360);
+        viewing.card.style.transform = "rotate("+rotation+"deg)";
+        viewing.card.style.zIndex = 1;
+
+        targ.style.zIndex = 10;
+        targ.style.transform = "rotate(0deg)";
+        targ.className = "zoomedCard";
+        viewing.card = targ;
+        viewing.isViewing = true;
+    }
+    else if(viewing.card == targ){
+        viewing.card.className = "card";
+        let rotation = Math.floor(Math.random()*360);
+        viewing.card.style.transform = "rotate("+rotation+"deg)";
+        viewing.card.style.zIndex = 1;
+        viewing.card = "dummy";
+        viewing.isViewing = false;
+    }
+    else{
+        targ.style.zIndex = 10;
+        targ.style.transform = "rotate(0deg)";
+        targ.className = "zoomedCard";
+        viewing.card = targ;
+        viewing.isViewing = true;
+    }
+}
