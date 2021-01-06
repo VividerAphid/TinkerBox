@@ -23,12 +23,13 @@
             let left = Math.floor(Math.random()*750) + 100;
             let rotation = Math.floor(Math.random()*360);
 
-            let targCard = buildCard({title: "card"+r, colour:"rgb("+red+","+green+","+ blue+")", linkAddress:"www.github.com", description:"Some test text for the sake of it!", parent:masterDiv}); 
+            let targCard = buildCard({title: "card"+r, colour:"rgb("+red+","+green+","+ blue+")", linkAddress:'<a href="https://www.google.com/" target="_blank">link???</a>', description:"Some test text for the sake of it!", parent:masterDiv}); 
             targCard.style.top = top+"px";
             targCard.style.left = left+"px";
             targCard.style.transform = "rotate("+ rotation +"deg)";
-            targCard.onclick = function(){event.preventDefault; pickUp(this);};
+            targCard.onclick = function(){pickUp(this);};
             deck.push(targCard);            
         }
     </script>
+    
 </body>
