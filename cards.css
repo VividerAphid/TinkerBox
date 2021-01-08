@@ -1,0 +1,56 @@
+.card{
+    border: 3px gray solid;
+    border-radius: 5px;
+    width: 250px;
+    height: 375px;
+    font-size: 20px;
+    position: absolute;
+}
+.cardTitle{
+    margin-left: 9%;
+    margin-bottom: 1%;
+    margin-top:1%;
+}
+.cardPicture{
+    border: 2px gray solid;
+    border-radius: 2px;
+    height: 40%;
+    width: 80%;
+    margin-left: 9%;
+    margin-right: 9%;
+}
+.cardDescription{
+    margin-left:9%;
+    margin-right:9%;
+}
+.cardLink{
+    margin-left:9%;
+    margin-right:9%;
+}
+.zoomedCard{
+    border: 3px gray solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 600px;
+    font-size:40px;
+    position: absolute;
+}
+.sortCard{
+    border: 3px gray solid;
+    border-radius: 5px;
+    width: 250px;
+    height: 375px;
+    font-size: 20px;
+    display: inline-block;
+    margin:1%;
+}
+
+.sortZoomedCard{
+    border: 3px gray solid;
+    border-radius: 5px;
+    width: 400px;
+    height: 600px;
+    font-size:40px;
+    display: inline-block;
+    margin:10%;
+}
