@@ -21,30 +21,69 @@ function buildCard(props){
 
 function pickUp(targ){
     if(viewing.isViewing && viewing.card != targ){
-        viewing.card.className = "card";
-        let rotation = Math.floor(Math.random()*360);
-        viewing.card.style.transform = "rotate("+rotation+"deg)";
-        viewing.card.style.zIndex = 1;
+        if(viewing.isSorted){
+            viewing.card.className = "sortCard";
+            viewing.card.style.zIndex = 1;
+        }
+        else{
+            viewing.card.className = "card";
+            let rotation = Math.floor(Math.random()*360);
+            viewing.card.style.transform = "rotate("+rotation+"deg)";
+            viewing.card.style.zIndex = 1;
+        }
 
         targ.style.zIndex = 10;
         targ.style.transform = "rotate(0deg)";
-        targ.className = "zoomedCard";
+        if(viewing.isSorted){
+            targ.className = "sortZoomedCard";
+        }
+        else{
+            targ.className = "zoomedCard";
+        }  
         viewing.card = targ;
         viewing.isViewing = true;
     }
     else if(viewing.card == targ){
-        viewing.card.className = "card";
-        let rotation = Math.floor(Math.random()*360);
-        viewing.card.style.transform = "rotate("+rotation+"deg)";
-        viewing.card.style.zIndex = 1;
+        if(viewing.isSorted){
+            viewing.card.className = "sortCard";
+            viewing.card.style.zIndex = 1;
+        }
+        else{
+            viewing.card.className = "card";
+            let rotation = Math.floor(Math.random()*360);
+            viewing.card.style.transform = "rotate("+rotation+"deg)";
+            viewing.card.style.zIndex = 1;
+        }
         viewing.card = "dummy";
         viewing.isViewing = false;
     }
     else{
         targ.style.zIndex = 10;
         targ.style.transform = "rotate(0deg)";
-        targ.className = "zoomedCard";
+        if(viewing.isSorted){
+            targ.className = "sortZoomedCard";
+        }
+        else{
+            targ.className = "zoomedCard";
+        }  
         viewing.card = targ;
         viewing.isViewing = true;
     }
+}
+
+function sortCards(){
+    for(let r = 0; r< deck.length; r++){
+        deck[r].className = "sortCard";
+        deck[r].style.transform = "rotate(0deg)";
+    }
+    viewing.isSorted = true;
+}
+
+function scatterCards(){
+    for(let r = 0; r< deck.length; r++){
+        deck[r].className = "card";
+        let rotation = Math.floor(Math.random()*360);
+        deck[r].style.transform = "rotate(" + rotation + "deg)";
+    }
+    viewing.isSorted = false;
 }
