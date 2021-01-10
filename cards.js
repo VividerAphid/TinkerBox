@@ -1,7 +1,7 @@
 let projectsInfo = [
-    {title:"Map Toying", colour: "#9612c9", description: "A spin-off of the spin-off, ClickCon, where I played with some map generation techniques", linkAddress:'<a href="proj/mapToying/mapToying.html">Link here!</a>'}, 
-    {title:"Random Materials", colour: "#029660", description: "I played with generating random materials for a game world", linkAddress:'<a href="proj/RandomMaterials/randomMaterials.html">Link here!</a>'}, 
-    {title:"Tile Scatter", colour: "#a16902", description: "I got a silly portfolio idea, and it became this very homepage", linkAddress:'<a href="proj/tileScatter/tileScatter.html">Link here!</a>'}
+    {title:"Map Toying", colour: "#9612c9", description: "A spin-off of the spin-off, ClickCon, where I played with some map generation techniques", image: '<img class="projectImg" src="projectIcons/mapToying.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/mapToying/mapToying.html" target="_blank">Link here!</a>'}, 
+    {title:"Random Materials", colour: "#029660", description: "I played with generating random materials for a game world", image: '<img class="projectImg" src="projectIcons/RandomMats.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/RandomMaterials/randomMaterials.html" target="_blank">Link here!</a>'}, 
+    {title:"Tile Scatter", colour: "#a16902", description: "I got a silly portfolio idea, and it became this very homepage", image: '<img class="projectImg" src="projectIcons/tileScatter.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/tileScatter/tileScatter.html" target="_blank">Link here!</a>'}
     ];
 
 let deck = [];
@@ -13,7 +13,7 @@ for(let r = 0; r< cardCount; r++){
     let left = Math.floor(Math.random()*750) + 100;
     let rotation = Math.floor(Math.random()*360);
 
-    let targCard = buildCard({title: projectsInfo[r].title, colour: projectsInfo[r].colour, linkAddress: projectsInfo[r].linkAddress, description: projectsInfo[r].description, parent:masterDiv}); 
+    let targCard = buildCard({title: projectsInfo[r].title, colour: projectsInfo[r].colour, image: projectsInfo[r].image, linkAddress: projectsInfo[r].linkAddress, description: projectsInfo[r].description, parent:masterDiv}); 
     targCard.style.top = top+"px";
     targCard.style.left = left+"px";
     targCard.style.transform = "rotate("+ rotation +"deg)";
@@ -35,7 +35,7 @@ function buildCard(props){
     addElement({type: "div", id: props.title+"Card", class: "card", parent: props.parent, innards:""});//Card body
     let currentCard = document.getElementById(props.title+"Card");
     addElement({type:"div", id: props.title + "-title", class:"cardTitle", parent: currentCard, innards:props.title});//Card title
-    addElement({type:"div", id: props.title + "-picture", class:"cardPicture", parent:currentCard, innards:"Picture!"});//Card picture
+    addElement({type:"div", id: props.title + "-picture", class:"cardPicture", parent:currentCard, innards:props.image});//Card picture
     addElement({type:"div", id: props.title + "-description", class:"cardDescription", parent:currentCard, innards:props.description});//Card info
     addElement({type:"div", id: props.title + "-link", class:"cardLink", parent:currentCard, innards:props.linkAddress});
     currentCard.style.backgroundColor = props.colour;
