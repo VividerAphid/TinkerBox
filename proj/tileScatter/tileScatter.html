@@ -12,15 +12,15 @@
     </div>
     <script>
         let deck = [];
-        let cardCount = 10;
-        let viewing = {card: "dummy", isViewing: false, isSorted: false};
+        let cardCount = 30;
+        let viewing = {card: "dummy", isViewing: false, isSorted: false, originalCoord: {x: 0, y: 0}};
         
         for(let r = 0; r< cardCount; r++){
             let red = Math.floor(Math.random()*256);
             let green = Math.floor(Math.random()*256);
             let blue = Math.floor(Math.random()*256);
-            let top = Math.floor(Math.random()*750) + 100;
-            let left = Math.floor(Math.random()*750) + 100;
+            let top = Math.floor(Math.random()*(document.body.clientHeight - 175 - 25));
+            let left = Math.floor(Math.random()*(document.body.clientWidth - 175));
             let rotation = Math.floor(Math.random()*360);
 
             let targCard = buildCard({title: "card"+r, colour:"rgb("+red+","+green+","+ blue+")", linkAddress:'<a href="https://www.google.com/" target="_blank">link???</a>', description:"Some test text for the sake of it!", parent:masterDiv}); 

@@ -1,3 +1,11 @@
+body {
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
 .card{
     border: 3px gray solid;
     border-radius: 5px;
@@ -5,6 +13,7 @@
     height: 300px;
     font-size: 20px;
     position: absolute;
+    z-index: 2;
 }
 .cardTitle{
     margin-left: 9%;

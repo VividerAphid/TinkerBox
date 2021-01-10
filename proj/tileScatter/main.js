@@ -30,6 +30,8 @@ function pickUp(targ){
             let rotation = Math.floor(Math.random()*360);
             viewing.card.style.transform = "rotate("+rotation+"deg)";
             viewing.card.style.zIndex = 1;
+            viewing.card.style.top = viewing.originalCoord.y;
+            viewing.card.style.left = viewing.originalCoord.x;
         }
 
         targ.style.zIndex = 10;
@@ -42,6 +44,10 @@ function pickUp(targ){
         }  
         viewing.card = targ;
         viewing.isViewing = true;
+        viewing.originalCoord.x = targ.style.left;
+        viewing.originalCoord.y = targ.style.top;
+        viewing.card.style.top = ((document.body.clientHeight / 2) - 300) + "px";
+        viewing.card.style.left = ((document.body.clientWidth / 2) - 200) + "px";
     }
     else if(viewing.card == targ){
         if(viewing.isSorted){
@@ -53,6 +59,8 @@ function pickUp(targ){
             let rotation = Math.floor(Math.random()*360);
             viewing.card.style.transform = "rotate("+rotation+"deg)";
             viewing.card.style.zIndex = 1;
+            viewing.card.style.top = viewing.originalCoord.y;
+            viewing.card.style.left = viewing.originalCoord.x;
         }
         viewing.card = "dummy";
         viewing.isViewing = false;
@@ -68,6 +76,10 @@ function pickUp(targ){
         }  
         viewing.card = targ;
         viewing.isViewing = true;
+        viewing.originalCoord.x = targ.style.left;
+        viewing.originalCoord.y = targ.style.top;
+        viewing.card.style.top = ((document.body.clientHeight / 2) - 300) + "px";
+        viewing.card.style.left = ((document.body.clientWidth / 2) - 200) + "px";
     }
 }
 
