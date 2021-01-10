@@ -1,5 +1,13 @@
+#masterDiv{
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
 .card{
-    border: 3px gray solid;
+    border: 3px #ffffe6 solid;
     border-radius: 5px;
     width: 250px;
     height: 375px;

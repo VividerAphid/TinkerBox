@@ -6,11 +6,11 @@ let projectsInfo = [
 
 let deck = [];
 let cardCount = projectsInfo.length;
-let viewing = {card: "dummy", isViewing: false, isSorted: false};
+let viewing = {card: "dummy", isViewing: false, isSorted: false, originalCoord: {x:0, y:0}};
         
 for(let r = 0; r< cardCount; r++){
-    let top = Math.floor(Math.random()*750) + 100;
-    let left = Math.floor(Math.random()*750) + 100;
+    let top = Math.floor(Math.random()*(document.body.clientHeight - 200 - 25));
+    let left = Math.floor(Math.random()*(document.body.clientWidth - 175));
     let rotation = Math.floor(Math.random()*360);
 
     let targCard = buildCard({title: projectsInfo[r].title, colour: projectsInfo[r].colour, image: projectsInfo[r].image, linkAddress: projectsInfo[r].linkAddress, description: projectsInfo[r].description, parent:masterDiv}); 
@@ -53,6 +53,8 @@ function pickUp(targ){
             let rotation = Math.floor(Math.random()*360);
             viewing.card.style.transform = "rotate("+rotation+"deg)";
             viewing.card.style.zIndex = 1;
+            viewing.card.style.top = viewing.originalCoord.y;
+            viewing.card.style.left = viewing.originalCoord.x;
         }
 
         targ.style.zIndex = 10;
@@ -65,6 +67,10 @@ function pickUp(targ){
         }  
         viewing.card = targ;
         viewing.isViewing = true;
+        viewing.originalCoord.x = targ.style.left;
+        viewing.originalCoord.y = targ.style.top;
+        viewing.card.style.top = ((document.body.clientHeight / 2) - 375) + "px";
+        viewing.card.style.left = ((document.body.clientWidth / 2) - 200) + "px";
     }
     else if(viewing.card == targ){
         if(viewing.isSorted){
@@ -76,6 +82,8 @@ function pickUp(targ){
             let rotation = Math.floor(Math.random()*360);
             viewing.card.style.transform = "rotate("+rotation+"deg)";
             viewing.card.style.zIndex = 1;
+            viewing.card.style.top = viewing.originalCoord.y;
+            viewing.card.style.left = viewing.originalCoord.x;
         }
         viewing.card = "dummy";
         viewing.isViewing = false;
@@ -91,6 +99,10 @@ function pickUp(targ){
         }  
         viewing.card = targ;
         viewing.isViewing = true;
+        viewing.originalCoord.x = targ.style.left;
+        viewing.originalCoord.y = targ.style.top;
+        viewing.card.style.top = ((document.body.clientHeight / 2) - 375) + "px";
+        viewing.card.style.left = ((document.body.clientWidth / 2) - 200) + "px";
     }
 }
 
