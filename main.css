@@ -10,6 +10,7 @@ body {
 #buttonHolder{
 	text-align: center;
 	border: 3px gray solid;
+	background-color: gray;
 	border-radius: 5px;
 	width: fit-content;
 }
