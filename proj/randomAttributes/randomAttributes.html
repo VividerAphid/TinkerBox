@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Random Attributes</title>
+</head>
+<link rel="stylesheet" href="../../main.css">
+<script src="randomAttributes.js"></script>
+<body>
+    See dev console for now...
+    <div id="holder"><lable id="gurgle"></lable></div>
+    <script>
+        let babyObj = {};
+        for(var r = 0; r < 5; r++){
+            let tempAttribute = genAttributeName(4);
+            let value = genAttributeName(2);
+            assignAttribute(babyObj, tempAttribute, value);
+        }
+        console.log(babyObj);
+    </script>
+</body>
