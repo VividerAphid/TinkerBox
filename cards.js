@@ -1,7 +1,8 @@
 let projectsInfo = [
     {title:"Map Toying", colour: "#9612c9", description: "A spin-off of the spin-off, ClickCon, where I played with some map generation techniques", image: '<img class="projectImg" src="projectIcons/mapToying.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/mapToying/mapToying.html" target="_blank">Link here!</a>'}, 
     {title:"Random Materials", colour: "#029660", description: "I played with generating random materials for a game world", image: '<img class="projectImg" src="projectIcons/RandomMats.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/RandomMaterials/randomMaterials.html" target="_blank">Link here!</a>'}, 
-    {title:"Tile Scatter", colour: "#a16902", description: "I got a silly portfolio idea, and it became this very homepage", image: '<img class="projectImg" src="projectIcons/tileScatter.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/tileScatter/tileScatter.html" target="_blank">Link here!</a>'}
+    {title:"Tile Scatter", colour: "#a16902", description: "I got a silly portfolio idea, and it became this very homepage", image: '<img class="projectImg" src="projectIcons/tileScatter.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/tileScatter/tileScatter.html" target="_blank">Link here!</a>'},
+    {title:"Random Attributes", colour: "#990000", description: "I got a completely unnecessary idea to give objects random attributes", image: '<img class="projectImg" src="projectIcons/randomAttributes.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/randomAttributes/randomAttributes.html" target="_blank">Link here!</a>'}
     ];
 
 let deck = [];
