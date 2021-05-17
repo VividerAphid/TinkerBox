@@ -9,6 +9,6 @@ function addElement(props){
 
 function createInventorySlots(count){
     for(let r = 0; r < count; r++){
-        addElement({type:"div", id:"slot-"+r, class: "inventory-slot", parent: document.getElementById("inventory-master"), innards: "A"})
+        addElement({type:"div", id:"slot-"+r, class: "inventory-slot", parent: document.getElementById("inventory-master"), innards: Math.floor(Math.random()*255)})
     }
 }
