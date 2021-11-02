@@ -1,0 +1,8 @@
+.mapDiv{
+    display: inline;
+    width: 65%;
+}
+.mapCan{
+    border: 3px solid rgb(175, 174, 174);
+	border-radius: 5px;
+}
