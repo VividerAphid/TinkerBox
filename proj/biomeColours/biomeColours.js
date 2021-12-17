@@ -43,5 +43,6 @@ function spewColours(count, inRed, inGreen, inBlue, range, mutationRange){
         }
         ctx.fillStyle = "rgb("+(inRed + variation + redMut) + "," + (inGreen + variation + greenMut) +"," + (inBlue + variation + blueMut) + ")";
         ctx.fillRect(x, y, 25, 25);
+        ctx
     }
 }

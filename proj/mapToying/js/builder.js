@@ -1,4 +1,5 @@
 function generateTriangles(coords){
+	console.log(coords);
     var delaunator = Delaunator.from(coords);
 	var tris = delaunator.triangles;
 	var triChunks = [];
@@ -84,6 +85,10 @@ function getCoords(settings){
 			console.log("sym!");
 			plans = symmetry(settings);
 			break;
+		case 6:
+			console.log("spiral!");
+			plans = spiral(settings);
+			break;
 	}
 	console.log(plans.length);
     return plans;
@@ -109,6 +114,7 @@ function generateChunk(settings){
 		}
 		cords.push(p);
     }
+	console.log(cords);
     return cords;
 }
 
@@ -299,5 +305,38 @@ function symmetry(settings){
 		let quad4 = [quad1[0], settings.height-quad1[1]];
 		cords.push(quad1, quad2, quad3, quad4);
 	}
+	return cords;
+}
+
+function spiral(settings){
+	let cords = [];
+	let centerX = settings.width/2;
+	let centerY = settings.width/2;
+	let armCount = 4;
+	let spacingAngle = 360 / armCount;
+	for(let t = 0; t < armCount; t++){
+		let radius = 10;
+		let angle = t * spacingAngle;
+		//console.log(angle);
+		for(let r = 0; r < 20; r++){
+			let xVariance = Math.round(Math.random() * 30);
+			let yVariance = Math.round(Math.random() * 30);
+			let xPick = (Math.round(radius*(Math.cos(degreesToRadians(angle)))) + xVariance)+ centerX;
+			let yPick = (Math.round(radius*(Math.sin(degreesToRadians(angle)))) + yVariance) + centerY;
+			cords.push([xPick, yPick]);
+			let childCount = Math.round(Math.random()*2);
+			let childAngle = angle - 20;
+			for(let a = 0; a < childCount; a++){
+				let childX = (Math.round(radius*(Math.cos(degreesToRadians(childAngle)))) + xVariance)+ centerX;
+				let childY = (Math.round(radius*(Math.sin(degreesToRadians(childAngle)))) + yVariance)+ centerY;
+				cords.push([childX, childY]);
+				childAngle += 40;
+			}
+			radius += Math.round(Math.random() * 30) + 50;
+			angle += Math.round(Math.random() * 10) + 5;
+			//console.log(angle);
+		}
+	}
+	console.log(cords);
 	return cords;
 }

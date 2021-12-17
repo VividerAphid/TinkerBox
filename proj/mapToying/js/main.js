@@ -1,5 +1,5 @@
 function render(G, map, settings){
-    G.fillStyle = "#000";
+    G.fillStyle = "#222";
     G.fillRect(0,0,mapCan.width, mapCan.height);
     let reps = map.length;
     for (let r = 0; r < reps; r++){
