@@ -4,7 +4,8 @@ let projectsInfo = [
     {title:"Tile Scatter", colour: "#a16902", description: "I got a silly portfolio idea, and it became this very homepage", image: '<img class="projectImg" src="projectIcons/tileScatter.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/tileScatter/tileScatter.html" target="_blank">Link here!</a>'},
     {title:"Random Attributes", colour: "#990000", description: "I got a completely unnecessary idea to give objects random attributes", image: '<img class="projectImg" src="projectIcons/randomAttributes.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/randomAttributes/randomAttributes.html" target="_blank">Link here!</a>'},
     {title:"Encrypto", colour: "#ab4c03", description: "I tried my hand at some very lazy cryptography", image: '<img class="projectImg" src="projectIcons/encrypto.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/encrypto/encrypto.html" target="_blank">Link here!</a>'},
-    {title:"Biome Colours", colour: "#a60090", description: "I tried playing with what it would look like to generate worlds with different colours...", image: '<img class="projectImg" src="projectIcons/biomeColours.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/biomeColours/biomeColours.html" target="_blank">Link here!</a>'}
+    {title:"Biome Colours", colour: "#a60090", description: "I tried playing with what it would look like to generate worlds with different colours...", image: '<img class="projectImg" src="projectIcons/biomeColours.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/biomeColours/biomeColours.html" target="_blank">Link here!</a>'},
+    {title:"Raffle", colour: "#2200aa", description: "I made a simple raffle ticket drawing thing", image: '<img class="projectImg" src="projectIcons/raffle.PNG" alt="Picture was here...">', linkAddress:'<a href="proj/raffle/raffle.html" target="_blank">Link here!</a>'}
     ];
 
 let deck = [];
