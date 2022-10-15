@@ -1,5 +1,5 @@
 function generateTriangles(coords){
-	console.log(coords);
+	//console.log(coords);
     var delaunator = Delaunator.from(coords);
 	var tris = delaunator.triangles;
 	var triChunks = [];
@@ -114,7 +114,7 @@ function generateChunk(settings){
 		}
 		cords.push(p);
     }
-	console.log(cords);
+	//console.log(cords);
     return cords;
 }
 
