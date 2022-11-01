@@ -92,6 +92,7 @@ function verifyAllConnected(map){
     }
 
     if(clusters.length > 1){
+        //TODO: Prioritise connecting to main cluster instead of doing weird arms to other small clusters
         for(let r = 0; r < clusters.length; r++){
             clusters[r].averageCoords = {x:0, y:0};
             let planets = clusters[r].planets;
