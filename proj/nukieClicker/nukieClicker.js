@@ -29,7 +29,7 @@ var stats = {
             exponent: 1.5
         },
     },
-    money: 500,
+    money: 0,
     monpd: 0.5
 };
 //Level formula (lvl * x) ^2
@@ -115,6 +115,8 @@ function initUIFunctions(){
                 stats.shop.autoDropUnlocked = true;
                 togglePause();
                 updateUI();
+                document.getElementById("autoDropLbl").style.display = "none";
+                document.getElementById("autoDropBtn").style.display = "none";
             }}};
     document.getElementById("mpdBtn").onclick = function(){
         let monpdObj = stats.shop.monpd;
