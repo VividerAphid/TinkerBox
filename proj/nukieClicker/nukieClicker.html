@@ -2,14 +2,33 @@
 <head>
     <title>Nukie Clicker</title>
 </head>
+<link rel="stylesheet" href="nukieClicker.css">
 <link rel="stylesheet" href="../../main.css">
 
 <body>
     <p>This page is about how it sounds, a very terrible clicker game based on nukes instead of cookies...</p>
-    <p id="testCounter"></p>
-    <p id="speedVal"></p>
-    <button id="speedBtn" onclick="incMilliseconds()">Increase speed</button>
-    <button id="incBtn" onclick="incInc()">Increase Inc</button>
-    <button id="pauseBtn" onclick="togglePause()">Pause Time</button>
+    <p id="testCounter">Nukes Dropped: 0</p>
+    <p id="moneyVal">Money: $0</p>
+    <p id="incVal">Nukes Per Drop: 1</p>
+    <p id="speedVal">Nuke Drop Interval(in ms): 1000</p>
+    <p id="earnVal">Money per drop: $0.5</p>
+
+    <p><button id="dropBtn">Drop Nuke!</button></p>
+    <br>
+
+    <label for="npdLbl">Increase Nukes Per Drop: </label>
+    <button id="npdBtn">$9</button>
+    <br>
+    <label for="mpdLbl">Increase Money Per Drop: </label>
+    <button id="mpdBtn">$9</button>
+    <br>
+    <label for="autoDropLbl">Unlock Auto-Drop: </label>
+    <button id="autoDropBtn">$500</button>
+    <br>
+    <label for="speedLbl">Increase Speed Per Drop: </label>
+    <button id="speedBtn">$3</button>
+    <br>
+    <button id="pauseBtn">Pause Time</button>
+    <br>
     <script src="nukieClicker.js"></script>
 </body>
