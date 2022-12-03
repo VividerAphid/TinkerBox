@@ -46,7 +46,7 @@ function randomGen(settings){
 }
 
 function verifyAllConnected(map){
-    console.log("verifyAllConnected");
+    //console.log("verifyAllConnected");
     let colList = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00cccc", "#e65c00", "#2e5cb8", "#800080","#663300", "#ff8080","#00802b", "#008080","#800000","#666699","#cc9900"];
 
     let clusters = [];
@@ -63,7 +63,7 @@ function verifyAllConnected(map){
         clusterCount++;
         clusters.push({colour: colList[clusterCount-1], planets: []});
         let currentCluster = clusters[clusterCount-1];
-        visitQueue[0].colour = currentCluster.colour;
+        //visitQueue[0].colour = currentCluster.colour;
         visited[visitQueue[0].id] = true;
         visitedCount++;
         
@@ -73,7 +73,7 @@ function verifyAllConnected(map){
             for(let r = 0; r < visiting.connections.length; r++){
                 let connectionID = visiting.connections[r];
                 if(visited[connectionID] == false){
-                    map[connectionID].colour = currentCluster.colour;
+                    //map[connectionID].colour = currentCluster.colour;
                     visitQueue.push(map[connectionID]);
                     visited[connectionID] = true;
                     visitedCount++;
@@ -103,7 +103,7 @@ function verifyAllConnected(map){
             clusters[r].averageCoords.x = clusters[r].averageCoords.x / planets.length;
             clusters[r].averageCoords.y = clusters[r].averageCoords.y / planets.length;
         }
-        console.log(clusters);
+        //console.log(clusters);
         for(let r = 0; r < clusters.length; r++){
             let base = clusters[r].averageCoords;
             let closest;
@@ -129,11 +129,11 @@ function verifyAllConnected(map){
                     nearSelfPlanetDistance = tempDist;
                 }
             }
-            nearSelfPlanet.colour = "#555";
+            //nearSelfPlanet.colour = "#555";
 
             let nearTargPlanet;
             let nearTargPlanetDistance = Infinity;
-            console.log(closest.planets.length);
+            //console.log(closest.planets.length);
             for(let x = 0; x < closest.planets.length; x++){
                 let tempX = closest.planets[x].x
                 let tempY = closest.planets[x].y
@@ -143,7 +143,7 @@ function verifyAllConnected(map){
                     nearTargPlanetDistance = tempDist;
                 }
             }
-            nearTargPlanet.colour = "#fff";
+            //nearTargPlanet.colour = "#fff";
 
             nearTargPlanet.connections.push(nearSelfPlanet.id);
             nearSelfPlanet.connections.push(nearTargPlanet.id);

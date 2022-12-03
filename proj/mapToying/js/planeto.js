@@ -12,6 +12,7 @@ class planeto{
         this.radius = radius;
         this.colour = colour;
         this.value = value;
+        this.defense = 0;
         this.isShowing = false;
         this.connections = connections;
         
@@ -61,6 +62,12 @@ class planeto{
             }           
             G.font = "20px Arial";
             G.fillText(this.id, this.x-20, this.y-20);
+        }
+        if(settings.defenseOn){
+            G.fillStyle = "#000";
+            G.strokeStyle = "#000";
+            G.font = "20px Arial";
+            G.fillText(this.defense, this.x-5, this.y+5)
         }
     }
 

@@ -31,7 +31,8 @@ function setCanvasDims(map){
 
 function update(){
 
-	settings = {debug: true, 
+	settings = {debug: true,
+		defenseOn: true, 
 		width: widthIn.value * 1, 
 		height: heightIn.value * 1, 
 		type: mapType.selectedIndex * 1, 
@@ -46,6 +47,8 @@ function update(){
 	};
 
 	map = verifyAllConnected(convertDataToMap(randomGen(settings)));
+
+	map = returnHeatmap(map, [map[1], map[3], map[5], map[25], map[50]], 1);
 
     setCanvasDims(map);
     render(ctx, map, settings);
