@@ -41,8 +41,11 @@ function spewColours(count, inRed, inGreen, inBlue, range, mutationRange){
         if(negBlue > .5){
             blueMut *= -1;
         }
-        ctx.fillStyle = "rgb("+(inRed + variation + redMut) + "," + (inGreen + variation + greenMut) +"," + (inBlue + variation + blueMut) + ")";
-        ctx.fillRect(x, y, 25, 25);
-        ctx
+        let finalColor = "rgb("+(inRed + variation + redMut) + "," + (inGreen + variation + greenMut) +"," + (inBlue + variation + blueMut) + ")";
+        //ctx.fillStyle = finalColor;
+        //ctx.fillRect(x, y, 25, 25);
+        console.log(finalColor);
+        drawGrass(ctx, finalColor, x, y);
+        
     }
 }
