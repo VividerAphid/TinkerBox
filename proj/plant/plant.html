@@ -10,7 +10,7 @@
 
 <body>
     <canvas id="can" style="border:1px solid #d3d3d3;"></canvas>
-    <button id="stopBtn">Stop Growth</button>
+    <button id="growBtn">Toggle Growth</button>
     <script>
         can.width = 1000;
         can.height = 1000;
@@ -30,6 +30,16 @@
             }
         };
         let counter = setInterval(segFunct, 1000);
-        stopBtn.onclick = function(){event.preventDefault(); clearInterval(counter);};
+        let growing = true;
+        growBtn.onclick = function(){event.preventDefault(); 
+            if(growing){
+                growing = false;
+                clearInterval(counter);
+            }
+            else{
+                growing = true;
+                counter = setInterval(segFunct, 1000);
+            }
+        };
     </script>
 </body>
