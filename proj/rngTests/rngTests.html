@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <title>Run Its RNG</title>
+</head>
+
+<link rel="stylesheet" href="../../main.css">
+<script src="main.js"></script>
+
+<body>
+    !!!!!!!
+    <script>
+        let randy = new AphidRandom("yugh");
+        console.log("Seed: " + randy.newSeed);
+
+        console.log("Int Range 0-100");
+        for(let r = 0; r < 15; r++){
+            console.log(randy.rangeInt(0, 100));
+        }
+        console.log("Decimal Range 0-100");
+        for(let r = 0; r < 15; r++){
+            console.log(randy.rangeDec(0, 100));
+        }
+    </script>
+</body>

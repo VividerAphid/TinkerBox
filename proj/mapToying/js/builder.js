@@ -313,19 +313,22 @@ function spiral(settings){
 	let centerX = settings.width/2;
 	let centerY = settings.width/2;
 	let armCount = 4;
+	let childMax = 2;
+	let turnSharpness = 10;
 	let spacingAngle = 360 / armCount;
+	let starsPerArm = 20;
 	cords.push([centerX, centerY]);
 	for(let t = 0; t < armCount; t++){
 		let radius = 75;
 		let angle = t * spacingAngle;
 		//console.log(angle);
-		for(let r = 0; r < 20; r++){
+		for(let r = 0; r < starsPerArm; r++){
 			let xVariance = Math.round(Math.random() * 30);
 			let yVariance = Math.round(Math.random() * 30);
 			let xPick = (Math.round(radius*(Math.cos(degreesToRadians(angle)))) + xVariance)+ centerX + settings.padding * 2;
 			let yPick = (Math.round(radius*(Math.sin(degreesToRadians(angle)))) + yVariance) + centerY + settings.padding * 2;
 			cords.push([xPick, yPick]);
-			let childCount = Math.round(Math.random()*2);
+			let childCount = Math.round(Math.random()*childMax);
 			let childAngle = angle - 20;
 			for(let a = 0; a < childCount; a++){
 				let childX = (Math.round(radius*(Math.cos(degreesToRadians(childAngle)))) + xVariance)+ centerX + settings.padding * 2;
@@ -334,7 +337,7 @@ function spiral(settings){
 				childAngle += 40;
 			}
 			radius += Math.round(Math.random() * 30) + 50;
-			angle += Math.round(Math.random() * 10) + 5;
+			angle += Math.round(Math.random() * turnSharpness) + 5;
 			//console.log(angle);
 		}
 	}

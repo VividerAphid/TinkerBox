@@ -36,6 +36,9 @@ function returnHeatmap(map, owned, tries){
             map[r].colour = "rgb(" + redVal + ", 0, 0)";
         }
     }
+    for(let r = 0; r < owned.length; r++){
+        owned[r].colour = "#0f0";
+    }
  
     console.log(owned.sort((a, b) => a.defense - b.defense));
     return map;

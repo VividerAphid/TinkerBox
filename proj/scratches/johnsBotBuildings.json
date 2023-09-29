@@ -1,0 +1,65 @@
+{
+    "buildings": [
+        {
+            //Fuck you!
+            "name": "dickhole-building-69-420",
+            "tool-tip": "You said it would work John."
+        },
+
+        {
+            "name": "crop-circle",
+            "build-cost": {
+                "grass": 500,
+                "conspiracy-theorists": 5
+            },
+            "tool-tip": "Think of these as 'primitive' space-age dog marking"
+        },
+        {
+            "name": "Factory",
+            "build-cost": {
+                "iron": 10,
+                "mech-parts": 5,
+                "electronic-parts": 5
+            },
+            "tool-tip":"Build me my stuff!",
+            "modules":[
+                {
+                    "module":       "worker-slots",
+                    "productivity": "lvl * (str * 0.5 + dex * 0.3 + agi * 0.2)",
+                    "slots":        100
+                },
+                {
+                    "module": "resource-producer",
+                    "product": {
+                        "electronic-parts": 1
+                    },
+                    "required-materials":{
+                        "copper": 2,
+                        "silicon": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Big-fuck-off-monument",
+            "build-cost": {
+                "titanium": 1000,
+                "copper": 10000,
+                "iron": 10000
+            },
+            "tool-tip": "Y Tho?",
+            "modules":[
+                {
+                    "module": "resource-producer",
+                    "product": {
+                        "bragging-rights": 1000
+                    },
+                    "required-materials":{
+                        "epicness": 69420
+                    }
+                }
+            ]
+        }
+    ]
+    
+}
