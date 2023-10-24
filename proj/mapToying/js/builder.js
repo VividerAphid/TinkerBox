@@ -316,6 +316,7 @@ function spiral(settings){
 	let childMax = 2;
 	let turnSharpness = 10;
 	let spacingAngle = 360 / armCount;
+	let turnAngleDecay = 0;
 	let starsPerArm = 20;
 	cords.push([centerX, centerY]);
 	for(let t = 0; t < armCount; t++){
@@ -337,7 +338,7 @@ function spiral(settings){
 				childAngle += 40;
 			}
 			radius += Math.round(Math.random() * 30) + 50;
-			angle += Math.round(Math.random() * turnSharpness) + 5;
+			angle += Math.round(Math.random() * (turnSharpness - (turnAngleDecay * r))) + 5;
 			//console.log(angle);
 		}
 	}

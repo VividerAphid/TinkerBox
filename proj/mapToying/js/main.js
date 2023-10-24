@@ -48,8 +48,9 @@ function update(){
 
 	map = verifyAllConnected(convertDataToMap(randomGen(settings)));
 
-	map = returnHeatmap(map, [map[1], map[3], map[5], map[25], map[50]], 3);
+	//map = returnHeatmap(map, [map[1], map[3], map[5], map[25], map[50]], 3);
 	//map = returnChokePointHighlights(map);
+	map = returnFlowCheck(map);
 
     setCanvasDims(map);
     render(ctx, map, settings);
