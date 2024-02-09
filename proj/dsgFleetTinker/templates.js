@@ -30,7 +30,7 @@ var ships = {
         turnSpeed: 35,
         reactorPower: 1500
     },
-
+ 
     Armor:{
         name: "Tank Class",
         health: 5000,
@@ -41,7 +41,7 @@ var ships = {
         turnSpeed: 10,
         reactorPower: 2000
     },
-
+ 
     Damage:{
         name: "Killer Class",
         health: 1500,
@@ -52,7 +52,7 @@ var ships = {
         turnSpeed: 30,
         reactorPower: 3000
     },
-
+ 
     Utility:{
         name: "Utility Class",
         health: 2000,
@@ -64,7 +64,7 @@ var ships = {
         reactorPower: 1500
     }
 };
-
+ 
 var weapons = {
     LaserBeam:{
         name: "Laser Beam Cannon",
@@ -72,9 +72,9 @@ var weapons = {
         health: 100,
         damage: 100,
         range: 1000,
-        shotDelay: 3000, //time in ms
+        shotDelay: 1, //time in ms
         magSize: 1,
-        reloadTime: 1,
+        reloadTime: 3000,
         powerCost: 500
     },
     JNL:{
@@ -83,9 +83,9 @@ var weapons = {
         health: 100,
         damage: 10,
         range: 100,
-        shotDelay: 50, //time in ms
+        shotDelay: 200, //time in ms
         magSize: 10, //shots before cooldown
-        reloadTime: 1000, //cooldown, but referring to it as reload for consistency
+        reloadTime: 2000, //cooldown, but referring to it as reload for consistency
         projectileSpeed: 10,
         powerCost: 200
     },
@@ -95,9 +95,9 @@ var weapons = {
         health: 100,
         damage: 35,
         range: 100,
-        shotDelay: 100, //time in ms
+        shotDelay: 250, //time in ms
         magSize: 20, //shots before cooldown
-        reloadTime: 1500, //cooldown, but referring to it as reload for consistency
+        reloadTime: 2500, //cooldown, but referring to it as reload for consistency
         projectileSpeed: 20,
         powerCost: 350
     },
@@ -107,9 +107,9 @@ var weapons = {
         health: 100,
         damage: 15,
         range: 80,
-        shotDelay: 75, //time in ms
+        shotDelay: 250, //time in ms
         magSize: 10, //shots before cooldown
-        reloadTime: 1250, //cooldown, but referring to it as reload for consistency
+        reloadTime: 1750, //cooldown, but referring to it as reload for consistency
         projectileSpeed: 10,
         powerCost: 150
     },
@@ -119,9 +119,9 @@ var weapons = {
         health: 100,
         damage: 45,
         range: 80,
-        shotDelay: 125, //time in ms
+        shotDelay: 300, //time in ms
         magSize: 20, //shots before cooldown
-        reloadTime: 1500, //cooldown, but referring to it as reload for consistency
+        reloadTime: 2250, //cooldown, but referring to it as reload for consistency
         projectileSpeed: 15,
         powerCost: 300
     },
@@ -166,15 +166,15 @@ var weapons = {
         damageType: "Explosive",
         health: 100,
         damage: 250,
-        range: 100,
-        shotDelay: 100, //time in ms
+        range: 60,
+        shotDelay: 200, //time in ms
         magSize: 10, //shots before cooldown
-        reloadTime: 10000, //cooldown, but referring to it as reload for consistency
+        reloadTime: 15000, //cooldown, but referring to it as reload for consistency
         projectileSpeed: 10,
         powerCost: 350
     }
 };
-
+ 
 var modules = {
     MiningModule:{
         health: 100,
@@ -200,11 +200,16 @@ var modules = {
         powerCost: 250
     },
     Shield:{
-        health: 100,
+        health: 100, //Health of actual module
         shieldAmount: 1000,
         rechargeRate: 10, //Points per sec
         chargeStart: 5000, //ms without taking damage that shield will start charging
         powerCost: 450
+    },
+    Armor:{
+        health: 100,
+        armorAmount: 250,
+        powerCost: 10
     },
     Jammer:{
         health: 100,
