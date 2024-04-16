@@ -3,28 +3,21 @@ class pen{
         this.G = ctx;
     }
 
-    drawSegment(plant){
-        let fullGrown = true;       
-        this.G.fillStyle = plant.stemColor;
-        this.G.strokeStyle = plant.stemColor;
-        this.G.moveTo(plant.currentX, plant.currentY);
-        if(plant.currentY > (this.G.canvas.height - plant.maxHeight)){
-            plant.calcTurn(10);
-            fullGrown = false;
-        }
-        this.G.lineTo(plant.currentX, plant.currentY);
+    drawStem(stem){
+        this.G.beginPath();
+        this.G.fillStyle = stem.color;
+        this.G.strokeStyle = stem.color;
+        this.G.moveTo(stem.x1, stem.y1);
+        this.G.lineTo(stem.x2, stem.y2);
         this.G.stroke();
-        if(fullGrown){
-            this.drawFlower(plant);
-        }
     }
-    drawFlower(plant){
-        //this.G.beginPath();
-        this.G.fillStyle = plant.flowerColor;
-        this.G.strokeStyle = plant.flowerColor;   
-        this.G.arc(plant.currentX, plant.currentY, 10, 0, 2*Math.PI);   
+    drawFlower(flower){
+        this.G.beginPath();
+        this.G.fillStyle = flower.color;
+        this.G.strokeStyle = flower.color;   
+        this.G.arc(flower.x, flower.y, 10, 0, 2*Math.PI);   
         this.G.fill();
-        //this.G.stroke();
+        this.G.stroke();
     }
     clearCanvas(){
         this.G.fillStyle = "#222";

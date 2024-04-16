@@ -345,3 +345,7 @@ function spiral(settings){
 	console.log(cords);
 	return cords;
 }
+
+function spiral2(settings){
+	
+}

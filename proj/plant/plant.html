@@ -16,7 +16,7 @@
         can.height = 1000;
         let ctx = can.getContext("2d");
         let tplant = new plant(can.width/2, can.height, "#0f0");
-        let flowerColors = ["#a0a", "d00", "#fc8c03", "#dd0", "#0ee"];
+        let flowerColors = ["#c0c", "#d00", "#fc8c03", "#dd0", "#0ee", "#881188", "#d11", "#00e", "#fff"];
         let stemColors = ["#0f0", "#2d2", "#593612"];
         let plantList = [];
         let plantCount = 50;
@@ -24,14 +24,15 @@
             let ranX = Math.floor(Math.random()*can.width);
             let flowerCol = Math.floor(Math.random()*flowerColors.length);
             let stemCol = Math.floor(Math.random()*stemColors.length);
-            console.log(flowerCol);
+            //console.log(flowerCol);
             plantList.push(new plant(ranX, can.height, stemColors[stemCol], flowerColors[flowerCol], can.height));
         }
         let plantPen = new pen(ctx);
         let segFunct = function(){
             plantPen.clearCanvas();
             for(let r = 0; r < plantList.length; r++){
-                plantPen.drawSegment(plantList[r]);
+                plantList[r].calcNewSegment(10);
+                plantList[r].render(plantPen);
             }
         };
         let counter = setInterval(segFunct, 1000);
