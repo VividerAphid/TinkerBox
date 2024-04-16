@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Cookies</title>
+
+    <link rel="stylesheet" href="../../main.css">
+    <link rel="stylesheet" href="cookies.css">
+
+    <script src="cookieHandler.js"></script>
+
+</head>
+
+<body>
+    <div id="noticeDiv">
+        <h2>HI! This site is a simple page I did to play with how cookies and browser storage works.<br>
+            No tracking or personal data cookies are stored by my site,<br> but if you'd like you can still decline the cookies.
+        </h2>
+        <input id="acceptBtn" class="cookie-button" type="button" value="Cookies are fine!"/>
+        <input id="declineBtn" class="cookie-button" type="button" value="No thanks!"/>
+    </div>
+    <div id="mainDiv" style="display:none">
+        <h3 id="numHeader">Your fancy number is: </h3>
+        <h3 id="infoHeader">Nothing was loaded as cookies were declined!</h3>
+    </div>
+    <script>
+        let cookiesAllowed = false; //False until otherwise chosen
+        let cookieToggle = function(cooksAllow){
+            cookiesAllowed = cooksAllow;
+            noticeDiv.style.display = "none";
+            mainDiv.style.display = "inline";
+            pageLoad();
+        }
+        acceptBtn.onclick = function(){cookieToggle(true);};
+        declineBtn.onclick = function(){cookieToggle(false);}
+    </script>
+</body>
