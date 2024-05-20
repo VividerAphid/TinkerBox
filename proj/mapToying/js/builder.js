@@ -89,6 +89,10 @@ function getCoords(settings){
 			console.log("spiral!");
 			plans = spiral(settings);
 			break;
+		case 7:
+			console.log("spiral2");
+			plans = spiral2(settings);
+			break;
 	}
 	console.log(plans.length);
     return plans;
@@ -347,5 +351,43 @@ function spiral(settings){
 }
 
 function spiral2(settings){
-	
+	let coords = [];
+	let centerX = settings.width/2;
+	let centerY = settings.height/2;
+	let centerW = settings.width/4;
+	let centerH = settings.height/4;
+	let armCount = 4;
+	let turnSharpness = 10;
+	let spacingAngle = 360 / armCount;
+	let centerCluster = generateChunk({width:centerW, height:centerH, padding:0, density:3.5, r:settings.r,});
+	let armClusters = [];
+
+	centerCluster = shiftXCoords(centerCluster, centerX + (centerW/4));
+	centerCluster = shiftYCoords(centerCluster, centerY + (centerH/4));
+
+	//Hardcode arms for now to practice generation
+	armSettingsH = {width:settings.width/4.5, height:settings.height/2, padding:0, density:1.5, r:settings.r};
+	armSettingsW = {width:settings.width/2, height:settings.height/4.5, padding:0, density:1.5, r:settings.r};
+	let nArm = generateChunk(armSettingsH);
+	nArm = shiftXCoords(nArm, centerX + (centerW/4));
+	armClusters.push(nArm);
+	let eArm = generateChunk(armSettingsW)
+	eArm = shiftXCoords(eArm, centerX+centerW*1.5);
+	eArm = shiftYCoords(eArm, centerY+(centerW/4));
+	armClusters.push(eArm);
+	let sArm = generateChunk(armSettingsH)
+	sArm = shiftXCoords(sArm, centerX+(centerW/4));
+	sArm = shiftYCoords(sArm, centerY+(centerH*1.5));
+	armClusters.push(sArm);
+	let wArm = generateChunk(armSettingsW)
+	wArm = shiftYCoords(wArm, centerY+(centerH/4));
+	armClusters.push(wArm);
+
+	coords = centerCluster.slice();
+
+	for(let r = 0; r < armClusters.length; r ++){
+ 		coords = coords.concat(armClusters[r]);
+	}
+
+	return coords;
 }
