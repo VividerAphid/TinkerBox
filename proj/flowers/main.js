@@ -25,8 +25,18 @@ function nextGen(){
         }
     }
     plants = newPlants;
+    if(plants.length > stats.peakPlantCount){
+        stats.peakPlantCount = plants.length;
+    }
     if(plants.length == 0){
+        console.log("Peak: "+stats.peakPlantCount);
+        console.log("Generations: "+stats.generations);
         spawnFlowers(startingFlowers);
+        stats.peakPlantCount = plants.length;
+        stats.generations = 0;
+    }
+    else{
+        stats.generations++;
     }
     render();
 }
@@ -44,6 +54,7 @@ function stopGrowTick(){
 var arty = new artist(flowerbed.getContext('2d'));
 var plants = []; 
 var startingFlowers = 50;
+var stats = {peakPlantCount: startingFlowers, generations: 0};
 spawnFlowers(startingFlowers);
 render();
 var growTick = "";
