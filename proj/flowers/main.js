@@ -1,7 +1,7 @@
 function spawnFlowers(count){
     for(let r = 0; r < count; r++){
         let padding = 100;
-        let radius = 300;
+        let radius = 400;
         let x = (flowerbed.width/2) + Math.floor(Math.random()*radius) - radius/2;
         let y = (flowerbed.height/2) + Math.floor(Math.random()*radius) - radius/2;
         let colors = {r: 48, g: 148, b:38};
@@ -53,7 +53,7 @@ function stopGrowTick(){
 
 var arty = new artist(flowerbed.getContext('2d'));
 var plants = []; 
-var startingFlowers = 50;
+var startingFlowers = 100;
 var stats = {peakPlantCount: startingFlowers, generations: 0};
 spawnFlowers(startingFlowers);
 render();
