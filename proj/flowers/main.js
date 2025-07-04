@@ -1,11 +1,13 @@
 function spawnFlowers(count){
     for(let r = 0; r < count; r++){
         let padding = 100;
-        let radius = 400;
-        let x = (flowerbed.width/2) + Math.floor(Math.random()*radius) - radius/2;
-        let y = (flowerbed.height/2) + Math.floor(Math.random()*radius) - radius/2;
+        let radius = 600;
+        let x = Math.floor(Math.random()*flowerbed.width);//(flowerbed.width/2) + Math.floor(Math.random()*radius) - radius/2;
+        let y = flowerbed.height;
         let colors = {r: 48, g: 148, b:38};
-        plants.push(new plant(x, y, 15, colors, 0.1));
+        let flowerColors = {r: 255, g: 0, b:0};
+        let pattern = ["S", "S", "S", "F"];
+        plants.push(new plant(x, y, 15, colors, 0.1, pattern));
     }
 }
 
@@ -41,19 +43,30 @@ function nextGen(){
     render();
 }
 
+function plantGrow(){
+    for(let r = 0; r < plants.length; r++){
+        plants[r].grow();
+    }
+    render();
+}
+
 function startGrowTick(){
-    growTick = setInterval(nextGen, 100);
+    if(growTick == ""){
+        growTick = setInterval(plantGrow, tickSpeed);
+    }
 }
 
 function stopGrowTick(){
     clearInterval(growTick);
+    growTick = "";
 }
 
 //-------------------------------
 
 var arty = new artist(flowerbed.getContext('2d'));
 var plants = []; 
-var startingFlowers = 100;
+var startingFlowers = 50;
+var tickSpeed = 1000;
 var stats = {peakPlantCount: startingFlowers, generations: 0};
 spawnFlowers(startingFlowers);
 render();

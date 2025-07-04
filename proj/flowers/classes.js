@@ -1,21 +1,27 @@
 class plant{
-    constructor(x, y, flowerSize=15, rgbs, mutationChance=0.5){
+    constructor(x, y, flowerSize=10, rgbs, mutationChance=0.5, pattern=["S","F"], flowerRgbs){
         //Leaf shape
         //Height
         //Seed count
         //Stem count
-        //Stem segments
         this.x = x;
         this.y = y;
+        this.pattern = pattern; //Our growth string
+        this.patternIndex = 0; //Which growth step we are on
+        this.stemRgbs = rgbs;
         this.mutationChance = mutationChance;
         this.flowerSize = flowerSize;
-        this.flowerColor = this.loadFlowerColor(rgbs);
-        this.segments = [new flowerSegment(x, y, this.flowerColor, this.flowerSize)];
+        this.flowerColor = this.loadFlowerColor(flowerRgbs);
+        this.segments = [];
+        this.growing = true;
     }
     draw(g){
         for(let r = 0; r < this.segments.length; r++){
             this.segments[r].draw(g);
         }
+    }
+    get color(){
+        return "rgb("+this.stemRgbs.r+","+this.stemRgbs.g+","+this.stemRgbs.b+")";
     }
     loadFlowerColor(rgbs){
         if(!rgbs){
@@ -24,6 +30,44 @@ class plant{
         else{
             return rgbs;
         }
+    }
+    grow(){
+        for(let r = 0; r < this.segments.length; r++){
+            this.segments[r].grow();
+        }
+        this.calcNextGrowth();
+    }
+    calcNextGrowth(){
+        if(this.growing){
+            let prevSegment = {x2: this.x, y2: this.y, angle: 0, rgbs: this.stemRgbs};
+            if(this.segments[this.patternIndex-1]){prevSegment = this.segments[this.patternIndex-1];}
+            if(this.pattern[this.patternIndex] == "S"){
+                let newCoords = this.calcTurn(prevSegment.x2, prevSegment.y2, 270, 30);
+                this.segments.push(new stemSegment(prevSegment.x2, newCoords[0], prevSegment.y2, newCoords[1], prevSegment.rgbs, 1, prevSegment.angle));
+            }
+            else if(this.pattern[this.patternIndex] == "L"){
+                let newCoords = this.calcTurn(prevSegment.x2, prevSegment.y2, 240, 30);
+                this.segments.push(new stemSegment(prevSegment.x2, newCoords[0], prevSegment.y2, newCoords[1], prevSegment.rgbs, 1, prevSegment.angle));
+            }
+            else if(this.pattern[this.patternIndex] == "R"){
+                let newCoords = this.calcTurn(prevSegment.x2, prevSegment.y2, 300, 30);
+                this.segments.push(new stemSegment(prevSegment.x2, newCoords[0], prevSegment.y2, newCoords[1], prevSegment.rgbs, 1, prevSegment.angle));
+            }
+            else if(this.pattern[this.patternIndex] == "F"){
+                this.segments.push(new flowerSegment(prevSegment.x2, prevSegment.y2, this.flowerColor, this.flowerSize, 270, this.stemRgbs));
+            }
+            if(this.patternIndex == this.pattern.length){
+                this.growing = false;
+            }
+            else{
+                this.patternIndex++;
+            }  
+        }  
+    }
+    calcTurn(x, y, angle, length){
+        let newX = Math.round(length * Math.cos(this.degreesToRadians(angle)) + x);
+        let newY = Math.round(length * Math.sin(this.degreesToRadians(angle)) + y);
+        return [newX, newY];
     }
     calcNextGenFlower(){
         if(Math.random() > this.mutationChance){
@@ -111,34 +155,97 @@ class plant{
         }
         return [newX, newY];
     }
+    degreesToRadians(degrees){
+        return degrees * (Math.PI/180);
+    }
+    
+    radiansToDegrees(radians){
+        return radians * (180/Math.PI);
+    }
+
+    //Growth pattern
+    //L = left, R = right, S = straight, F = flower
+    //All directions are relative to previous stem direction
+    //Any node without a flower next will spawn a leaf
+    //[S, S, F]
+    //[S, [L, R], F]
     
 }
-class flowerSegment{
-    constructor(x,y, rgbs, size){
-        //Flower Color (r, g, b)
-        //Petal shape
-        //Flower size
+class plantSegment{
+    constructor(x, y, rgbs, angle){
         this.x = x;
         this.y = y;
         this.rgbs = rgbs; //{r, g, b} values
-        this.size = size; //Radius
+        this.angle = angle; //Angle the segment is facing in degrees
+        this.mature = false;
+        this.age = 0;
     }
     draw(g){
-        g.drawFlower(this);
+        console.log("draw() not overloaded!");
+    }
+    grow(){
+        console.log("grow() not overloaded!");
     }
     get color(){
         return "rgb("+this.rgbs.r+","+this.rgbs.g+","+this.rgbs.b+")";
     }
 }
-
-class stemSegment{
-    constructor(){
-        
+class flowerSegment extends plantSegment{
+    constructor(x, y, rgbs, size, angle, basePlantColor){
+        //Petal shape
+        super(x, y, basePlantColor, angle);
+        this.currentSize = 1;
+        this.maxSize = size;
+        this.maxAge = 25;
+        this.basePlantRgbs = basePlantColor;
+        this.rgbs = JSON.parse(JSON.stringify(basePlantColor));
+        this.finalRgbs = rgbs;
+    }
+    draw(g){
+        g.drawFlower(this);
+    }
+    grow(){
+        if(this.mature){
+                 
+        }
+        else{
+            this.currentSize++;
+            if(this.currentSize >= this.maxSize){
+                this.mature = true;
+            }
+        }
+        this.age++;
+        if(this.age <= this.maxAge){
+            this.colorLerp();
+        }
+    }
+    colorLerp(){
+        let p = (this.age/this.maxAge);
+        let q = 1 - p;
+        this.rgbs.r = this.basePlantRgbs.r * q + this.finalRgbs.r * p;
+        this.rgbs.g = this.basePlantRgbs.g * q + this.finalRgbs.g * p;
+        this.rgbs.b = this.basePlantRgbs.b * q + this.finalRgbs.b * p;
     }
 }
 
-class leafSegent{
-    constructor(){
+class stemSegment extends plantSegment{
+    constructor(x, x2, y, y2, rgbs, angle){
+        super(x, y, rgbs, angle);
+        this.x2 = x2;
+        this.y2 = y2;
+        this.length = 0;
+        this.maxLength = 30;
+    }
+    draw(g){
+        g.drawSegment(this);
+    }
+    grow(){
 
+    }
+}
+
+class leafSegent extends plantSegment{
+    constructor(x, y, rgbs, angle){
+        super(x, y, rgbs, angle);
     }
 }
