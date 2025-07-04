@@ -121,21 +121,54 @@ function scale(map, scal){
 
 function rotate(map, origin, deg){
 	//DEGREES not radians
-	//BROKEN NO WORK BECAUSE IM BAD AT MATH
-	map = shiftX(map, -origin.x);
-	map = shiftY(map, -origin.y)
 	let leng = map.length;
-	let sin = Math.sin(degreesToRadians(deg));
-	let cos = Math.cos(degreesToRadians(deg));
 	for(var r = 0; r < leng; r++){
-		console.log(map[r].x + ", " + map[r].y);
-		map[r].x = (map[r].x*cos) - (map[r].y*sin);
-		map[r].y = (map[r].x*sin) + (map[r].y*cos);
-		console.log(map[r].x + ", " + map[r].y);
+		let x = map[r].x;
+		let y = map[r].y;
+		let rotCoords = rotatePoint2(map[r].x, map[r].y, degreesToRadians(deg), origin.x, origin.y);
+		map[r].x = rotCoords[0];
+		map[r].y = rotCoords[1];
 	}
-	map = shiftX(map, origin.x);
-	map = shiftY(map, origin.y)
 	return map;
+}
+
+// function rotate(map, origin, deg){
+//     //DEGREES not radians
+//     //BROKEN NO WORK BECAUSE IM BAD AT MATH
+//     let leng = map.length;
+//     let sin = Math.sin(degreesToRadians(deg));
+//     let cos = Math.cos(degreesToRadians(deg));
+//     for(var r = 0; r < leng; r++){
+//         console.log("OG " + map[r].x + ", " + map[r].y);
+//         map[r].x = map[r].x * cos - map[r].y * sin - origin.x * cos ;
+//         map[r].y = map[r].x * sin + map[r].y * cos - origin.y * sin ;
+//         console.log(map[r].x + ", " + map[r].y);
+//     }
+//     return map;
+// }
+
+function rotatePoint(in_x, in_y, angle_in_radians, center_x, center_y) {
+	//John did all the math
+    const cos = Math.cos(angle_in_radians) ;
+    const sin = Math.sin(angle_in_radians) ;
+    let out_x = in_x * cos - sin * in_y - center_x * cos ;
+    let out_y = in_x * sin + cos * in_y - center_y * sin ;
+    
+    return [out_x, out_y] ;
+}
+
+function rotatePoint2(in_x, in_y, angle_in_radians, center_x, center_y) {
+	//John did all the math
+    const cos = Math.cos(angle_in_radians) ;
+    const sin = Math.sin(angle_in_radians) ;
+	let n_x = in_x - center_x;
+	let n_y = in_y - center_y;
+    let out_x = (n_x * cos) - (sin * n_y); //- (center_x * cos) ;
+    let out_y = (n_x * sin) + (cos * n_y); //- (center_y * sin) ;
+	out_x += center_x;
+	out_y += center_y;
+    
+    return [out_x, out_y] ;
 }
 
 function shiftX(map, shi){

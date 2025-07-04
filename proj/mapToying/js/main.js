@@ -22,8 +22,8 @@ function setCanvasDims(map){
 			maxY = map[v].y;
 		}
 	}
-	mapCan.width = maxX + 100;
-	mapCan.height = maxY + 100;
+	mapCan.width = 5000;//maxX + 100;
+	mapCan.height = 5000;//maxY + 100;
 	settingsBox.height = maxY + 100;
 	//console.log("wid: " + canvas.width);
 	//console.log("hei: " + canvas.height);
@@ -47,7 +47,7 @@ function update(){
 	};
 
 	map = verifyAllConnected(convertDataToMap(randomGen(settings)));
-	//map = rotate(map, {x:settings.width/2, y:settings.height/2}, 90);
+	//map = rotate(map, {x:settings.width/2, y:settings.height/2}, 45);
 
 	//map = returnHeatmap(map, [map[1], map[3], map[5], map[25], map[50]], 3);
 	//map = returnChokePointHighlights(map);

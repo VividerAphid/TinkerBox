@@ -7,6 +7,9 @@ function convertDataToMap(data){
         //new planeto(0, "p0", 50, 50, 10, "#fff", 1, [])
         out[r] = new planeto(data[r][0], "p"+r, data[r][1], data[r][2], 10, "#fff", 1, data[r][3]);
 	}
+
+    shiftX(out, 2000);
+    shiftY(out, 2000);
 	
     return out;
 }

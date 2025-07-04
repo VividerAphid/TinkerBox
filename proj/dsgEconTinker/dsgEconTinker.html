@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>DSG ECON TEST</title>
+</head>
+
+<link rel="stylesheet" href="../../main.css">
+
+<script src="market.js"></script>
+<script src="main.js"></script>
+
+<body>
+    <button id="startBtn" onclick="startMarketTick()">START MARKET TICK</button>
+    <button id="stopBtn" onclick="stopMarketTick()">STOP MARKET TICK</button>
+    <br>
+    <br>
+    <div id="marketListingsDiv">
+        Listings here..
+    </div>
+    <script>
+        var marketTickInterval = "";
+        var marketTickSpeed = 1000;
+        var gameMarket = new market();
+        var UIListings = [];
+        var items = [["Iron", 1000],
+                ["Tungsten", 1000],
+                ["Food", 10000],
+                ["Consumer Goods", 5000],
+        ];
+        var producers = [
+                ["Consumer Goods", 100, .5],
+                ["Food", 100, .9],
+                ["Tungsten", 100, .6],
+                ["Iron", 100, .7],
+        ];
+        var sellers = [
+                ["Consumer Goods", 80, 90, 0],
+                ["Food", 100, 100, 1],
+                ["Tungsten", 50, 75, 2],
+                ["Iron", 60, 75, 3],
+        ];
+        var buyers = [
+                ["Consumer Goods", 50],
+                ["Food", 100],
+        ]
+
+        initMarket();
+    </script>
+</body>

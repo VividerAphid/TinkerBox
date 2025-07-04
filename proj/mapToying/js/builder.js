@@ -389,5 +389,20 @@ function spiral2(settings){
  		coords = coords.concat(armClusters[r]);
 	}
 
+	for(let r = 0; r < coords.length; r++){
+		let maxRot = 150;
+		let xDiff = Math.abs(centerX-coords[r][0]);
+		let yDiff = Math.abs(centerY-coords[r][1]);
+		let rotPercent = ((xDiff/centerX) + (yDiff/centerY))/ 2; //Average of x and y diffs
+		let pointRot = maxRot * rotPercent;
+		let newPoint = rotatePoint2(coords[r][0], coords[r][1], degreesToRadians(pointRot), centerX, centerY);
+		//console.log({maxRot: maxRot, xDiff: xDiff, yDiff: yDiff, rotPercent: rotPercent, pointRot: pointRot, newPoint: newPoint});
+		if(newPoint[0] < 0){
+			console.log(r + " , " + newPoint[0]);
+		}
+		coords[r][0] = newPoint[0];
+		coords[r][1] = newPoint[1];
+	}
+
 	return coords;
 }
