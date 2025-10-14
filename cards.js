@@ -10,6 +10,7 @@ let projectsInfo = [
     {title:"Cookies", colour: "#008888", description: "I made a tiny page to mess with saving cookies", image: '<img class="projectImg" src="" alt="Picture was here...">', linkAddress:'<a href="proj/cookies/cookies.html" target="_blank">Link here!</a>'},
     {title:"Flowers", colour: "#cc54c8", description: "An extension of <a href='proj/plant/plant.html' target='_blank'>plant</a>, I wanted the flowers to 'evolve' over time by changing colors and sizes.", image: '<img class="projectImg" src="projectIcons/flowers.png" alt="Picture was here...">', linkAddress:'<a href="proj/flowers/flowers.html" target="_blank">Link here!</a>'},
     {title:"Screensavers", colour: "#eb4034", description: "I started making a flower 'evolution' project, then got more ideas for screensavers", image: '<img class="projectImg" src="projectIcons/Screensavers.png" alt="Picture was here...">', linkAddress:'<a href="proj/screensavers/screensavers.html" target="_blank">Link here!</a>'},
+    {title:"Chest Loot", colour: "#b8773b", description: "I made a simple chest loot simulator", image: '<img class="projectImg" src="projectIcons/chestLoot.png" alt="Picture was here...">', linkAddress:'<a href="proj/chestLoot/chestLoot.html" target="_blank">Link here!</a>'},
     ];
 
 let deck = [];
