@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <title>League of Logi Test</title>
+</head>
+
+<link href="../../main.css" rel="stylesheet">
+<link href="logi.css" rel="stylesheet">
+
+<script src="utils.js"></script>
+<script src="ui.js"></script>
+<script src="recipes.js"></script>
+<script src="classes.js"></script>
+<script src="main.js"></script>
+
+<body>
+    <div class="bordered-div inline-block">
+        <canvas id="gameCan" alt="Uh oh! canvas doesn't work"></canvas>
+    </div>
+    <div id="sideBarDiv" class="bordered-div inline-block">
+        
+        <div id="sideBarUpperDiv" class="bordered-div inline-block">
+            <u>INVENTORY</u>
+        </div>
+        <br>
+        <div id="sideBarLowerDiv" class="bordered-div inline-block">
+            <u>CRAFTING</u>
+        </div>
+    </div>
+    <script>
+        var ctx = gameCan.getContext("2d");
+        setupCanvas(ctx);
+        var game = new Game();
+        updateCraftingUI();
+        render(ctx);
+        var gameTicker = "";
+        var tickSpeed = 1000;
+        startTick(ctx);
+    </script>
+</body>
