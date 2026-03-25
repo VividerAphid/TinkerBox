@@ -35,6 +35,14 @@ function getFactoryProducts(type){
         metalBar: {cost: {metal: 4}, makes: 5, time:4},
         metalPlate: {cost: {metal: 8}, makes: 3, time: 5},
         plastic: {cost: {chemical: 4}, makes: 5, time: 4},
+        soldierSupply: {cost: {basicMaterial: 3, fabric: 3}, makes: 10, time: 5},
+        shovel: {cost: {basicMaterial: 6}, makes: 5, time: 4},
+        hammer: {cost: {basicMaterial: 6}, makes: 5, time: 4},
+        bandage: {cost: {fabric: 4}, makes: 15, time: 3},
+        medkit: {cost: {fabric: 4, plastic: 2}, makes: 3, time: 5},
+        basicRifle: {cost: {basicMaterial: 6}, makes: 5, time: 4},
+        basicAmmo: {cost: {explosivePowder: 3, metalBar: 3}, makes: 20, time: 3},
+        basicGrenade: {cost:{basicMaterial: 3, explosivePowder: 3}, makes: 12},
     }
     return products[type];
 }

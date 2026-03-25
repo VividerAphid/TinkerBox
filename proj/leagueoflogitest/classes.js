@@ -34,7 +34,7 @@ class Game{
     }
     generateFactories(){
         let factories = [];
-        let types = ["basicMaterial", "fabric", "explosivePowder", "metalBar", "metalPlate", "plastic"];
+        let types = ["basicMaterial", "fabric", "explosivePowder", "metalBar", "metalPlate", "plastic", "soldierSupply", "shovel", "hammer", "bandage", "medkit", "basicRifle", "basicAmmo", "basicGrenade"];
         for(let r = 0; r < types.length; r++){
             let x = Math.floor(Math.random()*(gameCan.width/2)+gameCan.width/2);
             let y = Math.floor(Math.random()*gameCan.height);
