@@ -16,7 +16,7 @@ function rectangleCircleCheck(circle, rectangle){
 function checkCraftable(item, inventory){
 	let craftable = false;
 	for(const [key, value] of Object.entries(item.cost)){
-		if(game.player.inventory[key] >= value){
+		if(inventory[key] >= value){
 			craftable = true;
 		}
 		else{

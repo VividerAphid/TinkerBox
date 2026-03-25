@@ -26,3 +26,15 @@ function getWeaponRecipes(){
         basicGrenade: {name: "basicGrenade", cost: {basicMaterial: 1, explosivePowder: 1}, makes: 3},
     }
 }
+
+function getFactoryProducts(type){
+    let products = {
+        basicMaterial: {cost: {wood: 3, metal: 3}, makes: 5, time: 3},
+        fabric: {cost: {fiber: 3}, makes: 5, time: 3},
+        explosivePowder: {cost: {chemical: 4}, makes: 5, time:4}, 
+        metalBar: {cost: {metal: 4}, makes: 5, time:4},
+        metalPlate: {cost: {metal: 8}, makes: 3, time: 5},
+        plastic: {cost: {chemical: 4}, makes: 5, time: 4},
+    }
+    return products[type];
+}

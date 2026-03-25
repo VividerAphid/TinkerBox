@@ -7,7 +7,7 @@ function addElement(id, type, parent, innards){
 }
 
 function setupCanvas(G){
-    gameCan.width = 750;
+    gameCan.width = 1500;
     gameCan.height = 750;
     gameCan.onclick = function(){checkClickHit(G);};
 }
@@ -37,4 +37,11 @@ function updateCraftingUI(){
             }
         }
     }
+}
+
+function drawText(G, x, y, text, font, colour){
+    G.fillStyle = colour;
+    G.strokeStyle = colour;
+    G.font = font;
+    G.fillText(text, x, y);
 }
