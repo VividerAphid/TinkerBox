@@ -13,6 +13,8 @@
     <p id="speedVal">Nuke Drop Interval(in ms): 1000</p>
     <p id="earnVal">Money per drop: $0.5</p>
     <p id="ascendsVal">Ascensions: 0</p>
+    <p id="totalNukesVal">Total Nukes Dropped: 0</p>
+    <p id="totalMoneyVal">Total Money Earned: $0</p>
     <p id="gamesVal">Games Won: 0</p>
 
     <p><button id="dropBtn">Drop Nuke!</button></p>
@@ -34,9 +36,14 @@
     <button id="ascendBtn" disabled="true">100,000 Nukes Dropped</button>
     <br>
     <label id="winBtnLbl"for="winBtn">Win the Game: </label>
-    <button id="winBtn" disabled="true">1,000,000,000 Nukes Dropped</button>
+    <button id="winBtn" disabled="true">1,000,000,000 Total Nukes Dropped</button>
     <br>
     <button id="pauseBtn">Pause Time</button>
     <br>
     <script src="nukieClicker.js"></script>
+    <script>
+        function spamClick(count){
+            for(let r=0; r< count; r++){dropBtn.click();}
+        }
+    </script>
 </body>

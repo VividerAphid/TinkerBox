@@ -8,6 +8,8 @@ var ticker;
 //var autoDropUnlocked = false;
 var stats = {
     nukesDropped: 0,
+    totalNukesDropped: 0,
+    totalMoneyEarned: 0,
     nukesPerDrop: 1,
     milliseconds: 1000,
     ascensions: 0,
@@ -40,7 +42,9 @@ initUIFunctions();
 
 function incNukesDropped(){
     stats.nukesDropped += stats.nukesPerDrop;
+    stats.totalNukesDropped += stats.nukesPerDrop;
     stats.money += stats.monpd;
+    stats.totalMoneyEarned += stats.monpd;
     updateUI();
 }
 function updateUI(){
@@ -51,8 +55,10 @@ function updateUI(){
     document.getElementById("earnVal").innerHTML = "Money per drop: $" + stats.monpd;
     document.getElementById("ascendsVal").innerHTML = "Ascensions: "+ stats.ascensions;
     document.getElementById("gamesVal").innerHTML = "Games Won: "+ stats.gamesWon;
+    document.getElementById("totalNukesVal").innerHTML = "Total Nukes Dropped: "+ stats.totalNukesDropped;
+    document.getElementById("totalMoneyVal").innerHTML = "Total Money Earned: $"+ stats.totalMoneyEarned;
     document.getElementById("ascendBtn").disabled = !(stats.nukesDropped >= 100000);
-    document.getElementById("winBtn").disabled = !(stats.nukesDropped >= 1000000000);
+    document.getElementById("winBtn").disabled = !(stats.totalNukesDropped >= 1000000000);
 }
 
 function refreshButtonsUI(){
