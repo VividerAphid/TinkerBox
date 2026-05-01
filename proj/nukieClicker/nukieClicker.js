@@ -154,6 +154,7 @@ function initUIFunctions(){
         stats.ascensions++;
         stats.money = 0;
         stats.nukesDropped = 0;
+        stats.paused = true;
         stats.shop = {
         autoDropUnlocked: false,
         npd: {
