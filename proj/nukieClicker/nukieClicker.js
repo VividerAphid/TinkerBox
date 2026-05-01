@@ -10,6 +10,8 @@ var stats = {
     nukesDropped: 0,
     nukesPerDrop: 1,
     milliseconds: 1000,
+    ascensions: 0,
+    gamesWon: 0,
     paused: true,
     shop: {
         autoDropUnlocked: false,
@@ -30,7 +32,7 @@ var stats = {
         },
     },
     money: 0,
-    monpd: 0.5
+    monpd: 0.5,
 };
 //Level formula (lvl * x) ^2
 
@@ -47,6 +49,19 @@ function updateUI(){
     document.getElementById("incVal").innerHTML = "Nukes Per Drop: " + stats.nukesPerDrop;
     document.getElementById("moneyVal").innerHTML = "Money: $" + stats.money;
     document.getElementById("earnVal").innerHTML = "Money per drop: $" + stats.monpd;
+    document.getElementById("ascendsVal").innerHTML = "Ascensions: "+ stats.ascensions;
+    document.getElementById("gamesVal").innerHTML = "Games Won: "+ stats.gamesWon;
+    document.getElementById("ascendBtn").disabled = !(stats.nukesDropped >= 100000);
+    document.getElementById("winBtn").disabled = !(stats.nukesDropped >= 1000000000);
+}
+
+function refreshButtonsUI(){
+    document.getElementById("npdBtn").innerHTML = "$9";
+    document.getElementById("mpdBtn").innerHTML = "$9";
+    document.getElementById("speedBtn").innerHTML = "$3";
+    document.getElementById("autoDropLbl").style.display = "";
+    document.getElementById("autoDropBtn").style.display = "";
+    document.getElementById("ascendBtn").disabled = true;
 }
 
 function incMilliseconds(amt){
@@ -124,10 +139,73 @@ function initUIFunctions(){
         if(stats.money >= cost){
             stats.money -= cost;
             stats.shop.monpd.lvl++;
-            stats.monpd = stats.shop.monpd.lvl * .5;
+            stats.monpd = (stats.shop.monpd.lvl * .5) + (stats.ascensions*.5);
             document.getElementById("mpdBtn").innerHTML = "$" + Math.round(Math.pow(monpdObj.lvl * monpdObj.multiplier, monpdObj.exponent));
             updateUI();
         }
+    }
+    document.getElementById("ascendBtn").onclick = function(){
+        stats.ascensions++;
+        stats.money = 0;
+        stats.nukesDropped = 0;
+        stats.shop = {
+        autoDropUnlocked: false,
+        npd: {
+            lvl: 1,
+            multiplier: 3,
+            exponent: 2
+        },
+        monpd: {
+            lvl: 1,
+            multiplier: 3,
+            exponent: 2
+        },
+        milli: {
+            lvl: 1,
+            multiplier: 2.2,
+            exponent: 1.5
+        }};
+        stats.monpd = 0.5 + (0.5 * stats.ascensions);
+        stats.nukesPerDrop = 1 + (1 * stats.ascensions);
+        stats.milliseconds = (50*stats.ascensions > 1000) ? 0: 1000 - (50*stats.ascensions);
+        document.getElementById("ascendBtn").disabled = true;
+        updateUI();
+        refreshButtonsUI();
+        clearInterval(ticker);
+    }
+    document.getElementById("winBtn").onclick = function(){
+        stats = {
+            nukesDropped: 0,
+            nukesPerDrop: 1,
+            milliseconds: 1000,
+            ascensions: 0,
+            gamesWon: 0,
+            paused: true,
+            shop: {
+                autoDropUnlocked: false,
+                npd: {
+                    lvl: 1,
+                    multiplier: 3,
+                    exponent: 2
+                },
+                monpd: {
+                    lvl: 1,
+                    multiplier: 3,
+                    exponent: 2
+                },
+                milli: {
+                    lvl: 1,
+                    multiplier: 2.2,
+                    exponent: 1.5
+                },
+            },
+            money: 0,
+            monpd: 0.5,
+        };
+        stats.gamesWon++;
+        refreshButtonsUI();
+        updateUI();
+        clearInterval(ticker);
     }
     document.getElementById("pauseBtn").onclick = togglePause;
 }
