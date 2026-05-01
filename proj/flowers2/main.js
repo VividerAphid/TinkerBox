@@ -61,7 +61,7 @@ function stopTick(){
 
 var ctx = document.getElementById("flowerbed").getContext("2d");
 var arty = new Artist(ctx);
-var tickSpeed = 500;
+var tickSpeed = 125;
 var gameTick = "";
 
 var planties = [];
