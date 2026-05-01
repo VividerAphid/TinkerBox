@@ -42,3 +42,9 @@ function degreesToRadians(degrees){
 function radiansToDegrees(radians){
 	return radians * (180/Math.PI);
 }
+
+function findLengthPoints(x1, x2, y1, y2){
+	var x = x1 - x2;
+	var y = y1 - y2;
+	return Math.sqrt(x*x + y*y);
+}
