@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Day Difference Calculator</title>
+</head>
+
+<link rel="stylesheet" href="../../main.css">
+
+<script src="dayDifferenceCalc.js"></script>
+
+<body>
+    <p>
+        <h2>Day Difference Calculator</h2>
+    </p>
+
+    <div>
+        <label for="modeSelect">Mode:</label>
+        <select id="modeSelect" onchange="toggleModeVisibility()">
+            <option value="daysTo">Days To</option>
+            <option value="dateBefore">Date X Days From</option>
+        </select>
+    </div>
+    <div id="daysToHolder">
+        <p>Days To</p>
+        <p>
+            <label for="startDate">Start Date:</label>
+            <input type="date"
+                id="startDate"
+                />
+            <br>
+            <label for="targetDate">Target Date:</label>
+            <input type="date"
+                id="targetDate"
+                />
+        </p>
+        <button id="calcDaysToButton" onclick="daysToButtonClick()">Calculate</button>
+    </div>
+    <div id="dateBeforeHolder" style="display:none">
+        <p>Date X Days From</p>
+        <input type="number" id="daysFromDateNumber" value="1" min="0" size="5" onchange="updateDayWordDiv()">
+        <div id="dayWordDiv" style="display:inline"> day </div>
+        <select id="beforeAfterSelect">
+            <option value="before">Before</option>
+            <option value="after">After</option>
+        </select>
+        <input type="date"
+            id="daysFromDate"
+            />
+        <p>
+            <button id="dateXDaysFromButton" onclick="dateXDaysFromButtonClick()">Calculate</button>
+        </p>
+    </div>
+    <div>
+        <p id="resultP"></p>
+    </div>
+    <script>
+        toggleModeVisibility();
+        updateDayWordDiv();
+        loadTodayDate();
+    </script>
+</body>
