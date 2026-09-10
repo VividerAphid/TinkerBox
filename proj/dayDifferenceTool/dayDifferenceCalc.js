@@ -29,21 +29,31 @@ function parseDateStringToSlash(dateString){
 }
 
 function daysToButtonClick(){
-    let start = new Date(parseDateStringToSlash(document.getElementById("startDate").value));
-    let end = new Date(parseDateStringToSlash(document.getElementById("targetDate").value));
-    let result = calcDaysTo(end, start);
-    let dayWord = (result>1) ? "days":"day";
-    document.getElementById("resultP").innerHTML = start.toLocaleDateString() + " is <b>" + result + "</b> "+ dayWord +" from " + end.toLocaleDateString();
+    if(document.getElementById("startDate").value != "" && document.getElementById("targetDate").value != ""){
+        let start = new Date(parseDateStringToSlash(document.getElementById("startDate").value));
+        let end = new Date(parseDateStringToSlash(document.getElementById("targetDate").value));
+        let result = calcDaysTo(end, start);
+        let dayWord = (result>1) ? "days":"day";
+        document.getElementById("resultP").innerHTML = start.toLocaleDateString() + " is <b>" + result + "</b> "+ dayWord +" from " + end.toLocaleDateString();
+    }
+    else{
+        document.getElementById("resultP").innerHTML = "Please make sure to fill out all fields";
+    }
 }
 
 function dateXDaysFromButtonClick(){
-    let start = new Date(parseDateStringToSlash(document.getElementById("daysFromDate").value));
-    let before = (document.getElementById("beforeAfterSelect").value == "before");
-    let number = document.getElementById("daysFromDateNumber").value * 1;
-    let beforeWord = (before) ? "before " : "after ";
-    let dayWord = (number > 1) ? " days " : " day ";
-    let result = calcDateXDaysFrom(start, number, before);
-    document.getElementById("resultP").innerHTML = number + dayWord + beforeWord + start.toLocaleDateString() + " is "+ result.toLocaleDateString();
+    if(document.getElementById("daysFromDate").value != "" && !isNaN(document.getElementById("daysFromDateNumber").value)){
+        let start = new Date(parseDateStringToSlash(document.getElementById("daysFromDate").value));
+        let before = (document.getElementById("beforeAfterSelect").value == "before");
+        let number = document.getElementById("daysFromDateNumber").value * 1;
+        let beforeWord = (before) ? "before " : "after ";
+        let dayWord = (number > 1) ? " days " : " day ";
+        let result = calcDateXDaysFrom(start, number, before);
+        document.getElementById("resultP").innerHTML = number + dayWord + beforeWord + start.toLocaleDateString() + " is "+ result.toLocaleDateString();
+    }
+    else{
+        document.getElementById("resultP").innerHTML = "Please make sure to fill out all fields correctly";
+    }
 }
 
 function updateDayWordDiv(){
