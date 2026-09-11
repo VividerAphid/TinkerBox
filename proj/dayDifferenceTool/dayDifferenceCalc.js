@@ -13,15 +13,22 @@ function calcDaysTo(targetDay, startDay){
     return Math.floor(milliDiff/(24*60*60*1000));
 }
 
+// function calcDateXDaysFrom(targetDay, numDaysFrom, before){
+//     let awayFromDate = new Date();
+//     if(before){
+//         awayFromDate.setDate(targetDay.getDate() - numDaysFrom);
+//     }
+//     else{
+//         awayFromDate.setDate(targetDay.getDate() + numDaysFrom);
+//     }
+//     return awayFromDate;
+// }
+
 function calcDateXDaysFrom(targetDay, numDaysFrom, before){
-    let awayFromDate = new Date();
-    if(before){
-        awayFromDate.setDate(targetDay.getDate() - numDaysFrom);
-    }
-    else{
-        awayFromDate.setDate(targetDay.getDate() + numDaysFrom);
-    }
-    return awayFromDate;
+    //courtesy of john cynarx
+  const MILLIS_IN_DAY = 86400000 ;
+  let scale = before ? -MILLIS_IN_DAY : MILLIS_IN_DAY ;
+  return new Date(targetDay.getTime() + numDaysFrom * scale) ;
 }
 
 function parseDateStringToSlash(dateString){
