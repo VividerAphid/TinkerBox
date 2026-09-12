@@ -19,6 +19,7 @@
         <select id="modeSelect" onchange="toggleModeVisibility()">
             <option value="daysTo">Days To</option>
             <option value="dateBefore">Date X Days From</option>
+            <option value="ageAtDate">Age At Date</option>
         </select>
     </div>
     <div id="daysToHolder">
@@ -49,6 +50,17 @@
             />
         <p>
             <button id="dateXDaysFromButton" onclick="dateXDaysFromButtonClick()">Calculate</button>
+        </p>
+    </div>
+    <div id="ageCalcHolder" style="display:none">
+        <p><h3>Age At Date</h3></p>
+        <label for="birthdayDate">Birthday: </label>
+        <input type="date" id="birthdayDate"/>
+        <br>
+        <label for="targetAgeDate">Target Date: </label>
+        <input type="date" id="targetAgeDate"/>
+        <p>
+            <button id="ageCalcButton" onclick="ageCalcButtonClick()">Calculate</button>
         </p>
     </div>
     <div>

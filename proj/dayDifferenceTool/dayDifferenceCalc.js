@@ -31,6 +31,13 @@ function calcDateXDaysFrom(targetDay, numDaysFrom, before){
   return new Date(targetDay.getTime() + numDaysFrom * scale) ;
 }
 
+function calcAge(targetDay, birthDay){
+    let diff = {years:0, months:0};
+    diff.years = targetDay.getYear() - birthDay.getYear();
+    diff.months = (targetDay.getMonth() >= birthDay.getMonth()) ? targetDay.getMonth() - birthDay.getMonth() : 12 - (birthDay.getMonth() - targetDay.getMonth());
+    return diff;
+}
+
 function parseDateStringToSlash(dateString){
     return dateString.substring(0,4)+"/"+dateString.substring(5,7)+"/"+dateString.substring(8);
 }
@@ -63,6 +70,25 @@ function dateXDaysFromButtonClick(){
     }
 }
 
+function ageCalcButtonClick(){
+    if(document.getElementById("birthdayDate").value != "" && document.getElementById("targetAgeDate").value != ""){
+        let birthDate = new Date(parseDateStringToSlash(document.getElementById("birthdayDate").value));
+        let targetDate = new Date(parseDateStringToSlash(document.getElementById("targetAgeDate").value));
+        if(targetDate.getTime() > birthDate.getTime()){
+            let age = calcAge(targetDate, birthDate);
+            let yearWord = (age.years == 1) ? "year" : "years";
+            let monthWord = (age.months == 1) ? "month" : "months";
+            document.getElementById("resultP").innerHTML = age.years +" " + yearWord + ", " + age.months + " "+monthWord + " old";            
+        }
+        else{
+            document.getElementById("resultP").innerHTML = "Please make sure target date is after birth date";
+        }
+    }
+    else{
+        document.getElementById("resultP").innerHTML = "Please make sure to fill out all fields";
+    }
+}
+
 function updateDayWordDiv(){
     if(document.getElementById("daysFromDateNumber").value == 1){
         document.getElementById("dayWordDiv").innerHTML = "day";
@@ -74,16 +100,15 @@ function updateDayWordDiv(){
 
 function loadTodayDate(){
     let today = new Date();
-    document.getElementById("startDate").value = today.toISOString().slice(0,10);
+    let dateString = today.toISOString().slice(0,10);
+    document.getElementById("startDate").value = dateString;
+    document.getElementById("targetAgeDate").value = dateString;
 }
 
 function toggleModeVisibility(){
-    if(document.getElementById("modeSelect").value == "daysTo"){
-        document.getElementById("daysToHolder").style.display = "inline";
-        document.getElementById("dateBeforeHolder").style.display = "none";
-    }
-    if(document.getElementById("modeSelect").value == "dateBefore"){
-        document.getElementById("daysToHolder").style.display = "none";
-        document.getElementById("dateBeforeHolder").style.display = "inline";
-    }
+    let modeValue = document.getElementById("modeSelect").value
+
+    document.getElementById("daysToHolder").style.display = (modeValue == "daysTo") ? "inline" : "none";
+    document.getElementById("dateBeforeHolder").style.display = (modeValue == "dateBefore") ? "inline" : "none";
+    document.getElementById("ageCalcHolder").style.display = (modeValue == "ageAtDate") ? "inline" : "none";
 }
