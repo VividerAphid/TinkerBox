@@ -3,3 +3,17 @@ body {
 	background-color:#222;
 	font-size:25px;
 }
+select{
+	font-size:20px;
+}
+
+input[type=date]{
+	font-size:20px;
+}
+input[type=number]{
+	font-size:20px;
+}
+
+button{
+	font-size:25px;
+}
