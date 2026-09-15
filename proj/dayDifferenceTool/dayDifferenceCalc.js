@@ -35,6 +35,16 @@ function calcAge(targetDay, birthDay){
     let diff = {years:0, months:0};
     diff.years = targetDay.getYear() - birthDay.getYear();
     diff.months = (targetDay.getMonth() >= birthDay.getMonth()) ? targetDay.getMonth() - birthDay.getMonth() : 12 - (birthDay.getMonth() - targetDay.getMonth());
+    if(targetDay.getMonth() == birthDay.getMonth()){
+        console.log("Same month");
+        console.log(targetDay.getDate());
+        console.log(birthDay.getDate());
+        if(targetDay.getDate() < birthDay.getDate()){
+            console.log("!");
+            diff.years = (diff.years > 0) ? diff.years -= 1 : 0;
+            diff.months = 11;
+        }
+    }
     return diff;
 }
 
